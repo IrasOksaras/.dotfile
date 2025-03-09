@@ -141,10 +141,25 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
-  # ];
+  environment.systemPackages = with pkgs; [
+    wayland
+    # wayland-protocols
+    wget
+  ];
+
+  # programs.dconf.enable = true;
+
+  # environment.sessionVariables = {
+  #   # Waylandを優先
+  #   MOZ_ENABLE_WAYLAND = "1";
+  #   NIXOS_OZONE_WL = "1";  # Electronアプリのためのオゾンバックエンド
+  #   
+  #   # IMEの設定
+  #   GTK_IM_MODULE = "fcitx";  # または "ibus"
+  #   QT_IM_MODULE = "fcitx";   # または "ibus"
+  #   XMODIFIERS = "@im=fcitx"; # または "@im=ibus"
+  #   SDL_IM_MODULE = "fcitx";  # または "ibus"
+  # };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
