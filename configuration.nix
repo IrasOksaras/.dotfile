@@ -108,14 +108,17 @@
     packages = with pkgs; [
       neovim
       wl-clipboard-rs
-      git
       ocs-url
       tree
+      discord
     ];
   };
 
   programs = {
     zsh.enable = true;
+    git.enable = true;
+    nvim.enable = true;
+    nvim-pytnon3.enable = true;
     firefox.enable = true;
   };
 

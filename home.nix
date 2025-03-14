@@ -50,10 +50,6 @@
     enable = true;
   };
 
-  programs.discord = {
-    enable = true;
-  };
-
   programs.wezterm = {
     enable = true;
   };
