@@ -13,10 +13,10 @@
     enableAutosuggestions = true;
     enableCompletion = true;
     
-    # oh-my-zsh = {
-    #   enable = true;
-    #   plugins = [ "git" "docker" "sudo" ];
-    # };
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "docker" "sudo" ];
+    };
     
     plugins = [
       {
