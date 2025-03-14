@@ -45,6 +45,18 @@
       [[ -f ${config.home.homeDirectory}/.p10k.zsh ]] && source ${config.home.homeDirectory}/.p10k.zsh
     '';
   };
+
+  programs.spotify = {
+    enable = true;
+  };
+
+  programs.discord = {
+    enable = true;
+  };
+
+  programs.wezterm = {
+    enable = true;
+  };
   
   # p10k.zshファイルを管理
   home.file.".p10k.zsh".source = ./p10k.zsh;

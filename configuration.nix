@@ -108,10 +108,7 @@
     packages = with pkgs; [
       neovim
       wl-clipboard-rs
-      wezterm
       git
-      spotify
-      discord
       ocs-url
       tree
     ];
