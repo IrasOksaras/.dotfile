@@ -46,10 +46,6 @@
     '';
   };
 
-  programs.spotify = {
-    enable = true;
-  };
-
   programs.wezterm = {
     enable = true;
   };

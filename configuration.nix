@@ -37,13 +37,13 @@
   i18n = {
     defaultLocale = "ja_JP.UTF-8";
     inputMethod = {
-      enabled = "fcitx5";
+      type = "fcitx5";
       fcitx5.addons = [pkgs.fcitx5-mozc];
     };
   };
 
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       noto-fonts-cjk-serif
       noto-fonts-cjk-sans
       noto-fonts-emoji
@@ -71,11 +71,11 @@
   # services.xserver.enable = true;
 
   services = {
+    displayManager.sddm.enable = true;
+    desktopManager.plasma6.enable = true;
     xserver = {
       enable = true;
-      layout = "jp";
-      displayManager.sddm.enable = true;
-      desktopManager.plasma6.enable = true;
+      xkb.layout = "jp";
     };
   };
   
@@ -104,26 +104,32 @@
     shell = pkgs.zsh;
     createHome = true;
     uid = 1000;
-    extraGroups = [ "wheel" "sudo" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "wireshark" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      neovim
       wl-clipboard-rs
       ocs-url
-      tree
       discord
+      spotify
     ];
+  };
+
+  users.groups.wireshark = {
+    gid = 500;
   };
 
   programs = {
     zsh.enable = true;
     git.enable = true;
-    nvim.enable = true;
-    nvim-pytnon3.enable = true;
+    neovim.enable = true;
     firefox.enable = true;
+    wireshark = {
+      enable = true;
+      package = pkgs.wireshark;
+    };
   };
 
   # サウンド設定
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   hardware.alsa.enablePersistence = true;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -144,6 +150,7 @@
   environment.systemPackages = with pkgs; [
     wayland
     # wayland-protocols
+    tree
     wget
   ];
 
