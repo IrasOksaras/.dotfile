@@ -15,6 +15,8 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  virtualisation.libvirtd.enable = true;
   
   hardware = {
     bluetooth.enable = true;
@@ -37,11 +39,13 @@
   i18n = {
     defaultLocale = "ja_JP.UTF-8";
     inputMethod = {
+      enable = true;
       type = "fcitx5";
       fcitx5.addons = [pkgs.fcitx5-mozc];
     };
   };
 
+  # フォント設定
   fonts = {
     packages = with pkgs; [
       noto-fonts-cjk-serif
@@ -54,9 +58,9 @@
     fontconfig = {
       defaultFonts = {
         serif = ["Noto Serif CJK JP" "Noto Color Emoji"];
-	sansSerif = ["Noto Sans CJK JP" "Noto Clolor Emoji"];
-	monospace = ["JetBrainMono Nerd Font" "Noto Color Emoji"];
-	emoji = ["Noto Color Emoji"];
+        sansSerif = ["Noto Sans CJK JP" "Noto Clolor Emoji"];
+        monospace = ["JetBrainMono Nerd Font" "Noto Color Emoji"];
+        emoji = ["Noto Color Emoji"];
       };
     };
   };
@@ -67,9 +71,6 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   };
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
   services = {
     displayManager.sddm.enable = true;
     desktopManager.plasma6.enable = true;
@@ -77,6 +78,10 @@
       enable = true;
       xkb.layout = "jp";
     };
+  };
+
+  environment.variables = {
+    TERMINAL = "${pkgs.wezterm}/bin/wezterm";
   };
   
 
@@ -104,7 +109,7 @@
     shell = pkgs.zsh;
     createHome = true;
     uid = 1000;
-    extraGroups = [ "wheel" "wireshark" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "libvirtd" "kvm" "wireshark" "ubridges" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       wl-clipboard-rs
       ocs-url
@@ -128,6 +133,24 @@
     };
   };
 
+  # tailscale（VPN）を有効化
+ 
+  services.tailscale.enable = true;
+ 
+  networking.firewall = {
+ 
+    enable = true;
+ 
+    # tailscaleの仮想NICを信頼する
+ 
+    # `<Tailscaleのホスト名>:<ポート番号>`のアクセスが可能になる
+ 
+    trustedInterfaces = ["tailscale0"];
+ 
+    allowedUDPPorts = [config.services.tailscale.port];
+ 
+  };
+
   # サウンド設定
   services.pulseaudio.enable = false;
   hardware.alsa.enablePersistence = true;
@@ -136,7 +159,7 @@
     enable = true;
       alsa = {
         enable = true;
-	support32Bit = true;
+        support32Bit = true;
       };
     jack.enable = true;
     pulse.enable = true;
@@ -149,6 +172,11 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wayland
+    ubridge
+    busybox
+    dynamips
+    qemu
+    virt-manager
     # wayland-protocols
     tree
     wget

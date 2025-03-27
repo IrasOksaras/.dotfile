@@ -49,6 +49,15 @@
   programs.wezterm = {
     enable = true;
   };
+
+  home.packages = with pkgs; [
+    pkgs.gns3-gui
+    pkgs.gns3-server
+    pkgs.deno
+    pkgs.nodejs_23
+    pkgs.terraform
+    pkgs.ansible
+  ];
   
   # p10k.zshファイルを管理
   home.file.".p10k.zsh".source = ./p10k.zsh;
