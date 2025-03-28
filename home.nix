@@ -57,6 +57,7 @@
     pkgs.nodejs_23
     pkgs.terraform
     pkgs.ansible
+    pkgs.drawio
   ];
   
   # p10k.zshファイルを管理
