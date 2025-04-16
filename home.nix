@@ -33,6 +33,16 @@
           sha256 = "03r6hpb5fy4yaakqm3lbf4xcvd408r44jgpv4lnzl9asp4sb9qc0";
         };
       }
+      {
+        name = "zsh-nix-shell";
+        file = "nix-shell.plugin.zsh";
+        src = pkgs.fetchFromGitHub {
+          owner = "chisui";
+          repo = "zsh-nix-shell";
+          rev = "v0.8.0";
+          sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
+        };
+      }
     ];
     
     initExtra = ''
@@ -46,18 +56,26 @@
     '';
   };
 
+  programs = {
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      nix-direnv.enable = true;
+    };
+  };
+
   programs.wezterm = {
     enable = true;
   };
 
   home.packages = with pkgs; [
-    pkgs.gns3-gui
-    pkgs.gns3-server
-    pkgs.deno
-    pkgs.nodejs_23
-    pkgs.terraform
-    pkgs.ansible
-    pkgs.drawio
+    gns3-gui
+    gns3-server
+    deno
+    nil
+    terraform
+    ansible
+    drawio
   ];
   
   # p10k.zshファイルを管理

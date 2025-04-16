@@ -23,7 +23,7 @@
     bluetooth.powerOnBoot = true;
   };
 
-  networking.hostName = "ThinkBook"; # Define your hostname.
+  networking.hostName = "ThinkBook-E14-G7"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -50,17 +50,17 @@
     packages = with pkgs; [
       noto-fonts-cjk-serif
       noto-fonts-cjk-sans
-      noto-fonts-emoji
+      twemoji-color-font
       nerd-fonts.noto
       hackgen-nf-font
     ];
     fontDir.enable = true;
     fontconfig = {
       defaultFonts = {
-        serif = ["Noto Serif CJK JP" "Noto Color Emoji"];
-        sansSerif = ["Noto Sans CJK JP" "Noto Clolor Emoji"];
-        monospace = ["JetBrainMono Nerd Font" "Noto Color Emoji"];
-        emoji = ["Noto Color Emoji"];
+        serif = ["Noto Serif CJK JP" "Twemoji Color Emoji"];
+        sansSerif = ["Noto Sans CJK JP" "Twemoji Clolor Emoji"];
+        monospace = ["JetBrainMono Nerd Font" "Twemoji Color Emoji"];
+        emoji = ["Twemoji Color Emoji"];
       };
     };
   };
@@ -83,8 +83,6 @@
   environment.variables = {
     TERMINAL = "${pkgs.wezterm}/bin/wezterm";
   };
-  
-
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -111,13 +109,29 @@
     uid = 1000;
     extraGroups = [ "wheel" "libvirtd" "kvm" "wireshark" "ubridges" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      wl-clipboard-rs
       ocs-url
       discord
       spotify
+      zoom-us
+      ciscoPacketTracer8
     ];
   };
 
+  environment.systemPackages = with pkgs; [
+    wayland
+    wl-clipboard-rs
+    ubridge
+    busybox
+    dynamips
+    qemu
+    docker-compose
+    virt-manager
+    # wayland-protocols
+    tree
+    wget
+    aria2
+    htop
+  ];
   users.groups.wireshark = {
     gid = 500;
   };
@@ -133,34 +147,63 @@
     };
   };
 
+  virtualisation = {
+    virtualbox.host = {
+      enable = true;
+      enableExtensionPack = true;
+      enableKvm = true;
+      addNetworkInterface = false;
+    };
+    docker = {
+      enable = true;
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
+    };
+  };
+  users.extraGroups.vboxusers.members = ["Iras"];
+
   # tailscale（VPN）を有効化
- 
+
   services.tailscale.enable = true;
- 
+
   networking.firewall = {
- 
     enable = true;
- 
     # tailscaleの仮想NICを信頼する
- 
     # `<Tailscaleのホスト名>:<ポート番号>`のアクセスが可能になる
- 
     trustedInterfaces = ["tailscale0"];
- 
-    allowedUDPPorts = [config.services.tailscale.port];
- 
+    allowedUDPPorts = [config.services.tailscale.port 69 80];
   };
 
-  # サウンド設定
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
+
+  # sound config
   services.pulseaudio.enable = false;
   hardware.alsa.enablePersistence = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
+    extraConfig = {
+      pipewire = {
+        adfust-sample-rate = {
+          "context.properties" = {
+            "default.clock.rate" = 96000;
+            #"default.allowed-rates" = [ 96000 88200 48000 44100 ];
+            "default.allowed-rates" = [ 96000 ];
+            #"default.clock.quantum" = 4096;
+          };
+        };
       };
+    };
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
     jack.enable = true;
     pulse.enable = true;
   };
@@ -170,17 +213,6 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    wayland
-    ubridge
-    busybox
-    dynamips
-    qemu
-    virt-manager
-    # wayland-protocols
-    tree
-    wget
-  ];
 
   # programs.dconf.enable = true;
 
@@ -237,11 +269,34 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+
+  # power management
+  powerManagement.powertop.enable = true;
+  services = {
+    # 競合する為無効化
+    power-profiles-daemon.enable = false;
+    thermald.enable = true;
+    tlp = {
+      enable = true;
+      settings = {
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+        START_CHARGE_THRESH_BAT0 = 0;
+        STOP_CHARGE_THRESH_BAT0 = 0;
+      };
+    };
+  };
+
   system.stateVersion = "24.11"; # Did you read the comment?
 
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
     };
   };
 }
