@@ -1,5 +1,6 @@
 {
   inputs = {
+    # nixos-hardware.url = "github:NixOS/nixpkgs/nixos-hardware/master";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nur.url = "github:nix-community/NUR";
     home-manager = {
@@ -21,12 +22,12 @@
     nixosConfigurations = {
       myNixOS = inputs.nixpkgs.lib.nixosSystem {
         inherit system pkgs;
-        modules = [
-          ./configuration.nix
-        ];
         specialArgs = {
           inherit inputs;
         };
+        modules = [
+          ./configuration.nix
+        ];
       };
     };
 
