@@ -1,23 +1,25 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    inputs.xremap.nixosModules.default
+  ];
+  # ++ (with.inputs.nixos-hardware.nixosModules; [
+  #   common-cpu-intel-meteor-lake
+  #   common-gpu-intel-meteor-lake
+  #   common-ssd
+  # ]);
 
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  virtualisation.libvirtd.enable = true;
-  
   hardware = {
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
@@ -42,6 +44,21 @@
       enable = true;
       type = "fcitx5";
       fcitx5.addons = [pkgs.fcitx5-mozc];
+    };
+  };
+
+  services.xremap = {
+    userName = "Iras";
+    serviceMode = "system";
+    config = {
+      modmap = [
+        {
+          name = "CapsLock is dead";
+          remap = {
+            CapsLock = "Ctrl_L";
+          };
+        }
+      ];
     };
   };
 
@@ -74,10 +91,10 @@
   services = {
     displayManager.sddm.enable = true;
     desktopManager.plasma6.enable = true;
-    xserver = {
-      enable = true;
-      xkb.layout = "jp";
-    };
+    # xserver = {
+    #   enable = true;
+    #   xkb.layout = "jp";
+    # };
   };
 
   environment.variables = {
@@ -89,14 +106,6 @@
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
-
-  # Enable sound.
-  # hardware.pulseaudio.enable = true;
-  # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -111,8 +120,8 @@
     packages = with pkgs; [
       ocs-url
       discord
-      spotify
       zoom-us
+      remmina
       ciscoPacketTracer8
     ];
   };
@@ -131,6 +140,8 @@
     wget
     aria2
     htop
+    rnnoise-plugin
+    nur.repos.ataraxiasjel.waydroid-script
   ];
   users.groups.wireshark = {
     gid = 500;
@@ -139,7 +150,6 @@
   programs = {
     zsh.enable = true;
     git.enable = true;
-    neovim.enable = true;
     firefox.enable = true;
     wireshark = {
       enable = true;
@@ -161,6 +171,8 @@
         setSocketVariable = true;
       };
     };
+    libvirtd.enable = true;
+    waydroid.enable = true;
   };
   users.extraGroups.vboxusers.members = ["Iras"];
 
@@ -173,7 +185,7 @@
     # tailscaleの仮想NICを信頼する
     # `<Tailscaleのホスト名>:<ポート番号>`のアクセスが可能になる
     trustedInterfaces = ["tailscale0"];
-    allowedUDPPorts = [config.services.tailscale.port 69 80];
+    allowedUDPPorts = [config.services.tailscale.port];
     checkReversePath = "loose";
   };
 
@@ -280,15 +292,17 @@
     tlp = {
       enable = true;
       settings = {
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_AC = "powersave";
         CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+        PLATFORM_PROFILE_ON_AC = "balanced";
+        PLATFORM_PROFILE_ON_BAT = "low-power";
         START_CHARGE_THRESH_BAT0 = 0;
         STOP_CHARGE_THRESH_BAT0 = 0;
       };
     };
   };
 
-  system.stateVersion = "24.11"; # Did you read the comment?
+  # system.stateVersion = "24.11"; # Did you read the comment?
 
   nix = {
     settings = {

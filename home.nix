@@ -44,7 +44,12 @@
         };
       }
     ];
-    
+
+    shellAliases = {
+      vi = "nvim";
+      vim = "nvim";
+    };
+
     initExtra = ''
       # Enable Powerlevel10k instant prompt
       if [[ -r "${config.home.homeDirectory}/.cache/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
@@ -56,15 +61,25 @@
     '';
   };
 
-  programs = {
-    direnv = {
-      enable = true;
-      enableBashIntegration = true;
-      nix-direnv.enable = true;
-    };
+  programs.neovim = {
+    enable = true;
+  };
+
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
   };
 
   programs.wezterm = {
+    enable = true;
+  };
+
+  programs.chromium = {
+    enable = true;
+  };
+
+  programs.ncspot = {
     enable = true;
   };
 
@@ -72,12 +87,22 @@
     gns3-gui
     gns3-server
     deno
+    ranger
+    screen
     nil
     terraform
     ansible
     drawio
+    tor-browser
   ];
   
   # p10k.zshファイルを管理
-  home.file.".p10k.zsh".source = ./p10k.zsh;
+  home.file = {
+    ".p10k.zsh".source = ./p10k.zsh;
+
+    ".config/ranger/rc.conf".text = ''
+      set preview_images true
+      set preview_images_method iterm2
+    '';
+  };
 }
