@@ -4,17 +4,15 @@
 { inputs, config, lib, pkgs, ... }:
 
 {
-  imports = [
+  imports = [ 
     ./hardware-configuration.nix
     inputs.xremap.nixosModules.default
   ];
-  # ++ (with.inputs.nixos-hardware.nixosModules; [
+  # ++ (with inputs.nixos-hardware.nixosModules; [
   #   common-cpu-intel-meteor-lake
   #   common-gpu-intel-meteor-lake
   #   common-ssd
   # ]);
-
-  # nixpkgs.config.allowUnfree = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -28,7 +26,10 @@
   networking.hostName = "ThinkBook-E14-G7"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager = {
+    enable = true;  # Easiest to use and most distros use this by default.
+    wifi.powersave = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
@@ -59,6 +60,27 @@
           };
         }
       ];
+    };
+  };
+
+# 指紋認証
+  systemd.services.fprintd = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.type = "simple";
+  };
+  services.fprintd = {
+    enable = true;
+#     tod = {
+#       enable = true;
+#       driver = pkgs.libfprint-2-tod1-goodix;
+#     };
+  };
+  
+  services.tor = {
+    enable = true;
+    client.enable = true;
+    settings = {
+      EntryNodes = "hashy10G";
     };
   };
 
@@ -116,7 +138,7 @@
     shell = pkgs.zsh;
     createHome = true;
     uid = 1000;
-    extraGroups = [ "wheel" "libvirtd" "kvm" "wireshark" "ubridges" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "libvirtd" "kvm" "wireshark" "ubridges" "network" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       ocs-url
       discord
@@ -139,10 +161,13 @@
     tree
     wget
     aria2
+    nyx
     htop
-    rnnoise-plugin
+    intel-gpu-tools
+    # rnnoise-plugin
     nur.repos.ataraxiasjel.waydroid-script
   ];
+
   users.groups.wireshark = {
     gid = 500;
   };
@@ -155,6 +180,17 @@
       enable = true;
       package = pkgs.wireshark;
     };
+  };
+
+  services.llama-cpp = {
+    enable = true;
+    model = "/models/qwen2.5-coder-1.5b-instruct-q4_k_m.gguf";
+    extraFlags = [
+      "--n-gpu-layers"
+      "99"
+    ];
+    port = 8081;
+    # package = pkgs.llama-cpp.override { vulkanSupport = true; };
   };
 
   virtualisation = {
@@ -292,7 +328,7 @@
     tlp = {
       enable = true;
       settings = {
-        CPU_SCALING_GOVERNOR_ON_AC = "powersave";
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
         CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
         PLATFORM_PROFILE_ON_AC = "balanced";
         PLATFORM_PROFILE_ON_BAT = "low-power";

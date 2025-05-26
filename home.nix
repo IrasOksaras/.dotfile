@@ -10,7 +10,7 @@
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     enableCompletion = true;
     
     oh-my-zsh = {
@@ -46,11 +46,12 @@
     ];
 
     shellAliases = {
-      vi = "nvim";
-      vim = "nvim";
     };
 
-    initExtra = ''
+    initContent = ''
+      # shellの言語を英語に
+      export LANG=C
+
       # Enable Powerlevel10k instant prompt
       if [[ -r "${config.home.homeDirectory}/.cache/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
         source "${config.home.homeDirectory}/.cache/p10k-instant-prompt-''${(%):-%n}.zsh"
@@ -63,6 +64,31 @@
 
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    extraPackages = with pkgs; [
+      deno
+      nil
+      nixd
+    ];
+    plugins = [
+      pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+    ];
+  };
+
+  programs.git = {
+    enable = true;
+    userName = "IrasOksaras";
+    userEmail = "g024c1054@g.neec.ac.jp";
+  };
+
+  programs.gh = {
+    enable = true;
+    extensions = with pkgs; [gh-markdown-preview];
+    settings = {
+      editor = "nvim";
+    };
   };
 
   programs.direnv = {
@@ -86,19 +112,24 @@
   home.packages = with pkgs; [
     gns3-gui
     gns3-server
-    deno
     ranger
     screen
-    nil
+    spotify
+    slack
     terraform
     ansible
     drawio
     tor-browser
+    parsec-bin
+    calcurse
+    morgen
   ];
   
   # p10k.zshファイルを管理
   home.file = {
     ".p10k.zsh".source = ./p10k.zsh;
+    
+    ".tor\ project/Tor/torrc".source = ./torrc;
 
     ".config/ranger/rc.conf".text = ''
       set preview_images true

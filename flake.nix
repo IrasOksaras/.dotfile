@@ -1,20 +1,31 @@
 {
   inputs = {
-    # nixos-hardware.url = "github:NixOS/nixpkgs/nixos-hardware/master";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nur.url = "github:nix-community/NUR";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    xremap.url = "github:xremap/nix-flake";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    xremap = {
+      url = "github:xremap/nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nur, home-manager, ...}@inputs:
+  outputs = inputs:
   let
     system = "x86_64-linux";
-    overlays = [ nur.overlay ];
-    pkgs = import nixpkgs { 
+    overlays = [ inputs.nur.overlays.default ];
+    pkgs = import inputs.nixpkgs { 
       config.allowUnfree = true;
       inherit system overlays;
     };
@@ -33,10 +44,7 @@
 
     homeConfigurations = {
       myHome = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = import inputs.nixpkgs {
-          system = "x86_64-linux";
-          config.allowUnfree = true;
-        };
+        inherit pkgs;
         extraSpecialArgs = {
           inherit inputs;
         };
