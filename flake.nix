@@ -50,6 +50,9 @@
         };
         modules = [
           ./home.nix
+          ./modules/zsh/zsh.nix
+          ./modules/neovim/neovim.nix
+          ./modules/tor-browser/tor-browser.nix
         ];
       };
     };
