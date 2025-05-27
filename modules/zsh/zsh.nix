@@ -63,8 +63,6 @@
 
     git = {
       enable = true;
-      userName = "IrasOksaras";
-      userEmail = "g024c1054@g.neec.ac.jp";
     };
 
     gh = {
