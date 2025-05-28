@@ -35,7 +35,6 @@
     morgen
   ];
   
-  # p10k.zshファイルを管理
   home.file = {
     ".config/ranger/rc.conf".text = ''
       set preview_images true

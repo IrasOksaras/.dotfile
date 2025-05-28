@@ -60,20 +60,7 @@
       enableBashIntegration = true;
       nix-direnv.enable = true;
     };
-
-    git = {
-      enable = true;
-    };
-
-    gh = {
-      enable = true;
-      extensions = with pkgs; [gh-markdown-preview];
-      settings = {
-        editor = "nvim";
-      };
-    };
   };
-
 
   home.file = {
     ".p10k.zsh".source = ./p10k.zsh;
