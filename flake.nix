@@ -50,11 +50,11 @@
         };
         modules = [
           ./home-manager/home.nix
-          ./home-manager/modules/home/zsh/zsh.nix
-          ./home-manager/modules/home/neovim/neovim.nix
-          ./home-manager/modules/home/git/git.nix
-          ./home-manager/modules/home/wezterm/wezterm.nix
-          ./home-manager/modules/home/tor-browser/tor-browser.nix
+          ./home-manager/modules/zsh/zsh.nix
+          ./home-manager/modules/neovim/neovim.nix
+          ./home-manager/modules/git/git.nix
+          ./home-manager/modules/wezterm/wezterm.nix
+          ./home-manager/modules/tor-browser/tor-browser.nix
         ];
       };
     };
