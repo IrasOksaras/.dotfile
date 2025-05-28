@@ -37,7 +37,7 @@
           inherit inputs;
         };
         modules = [
-          ./configuration.nix
+          ./nixos/configuration.nix
         ];
       };
     };
@@ -49,12 +49,12 @@
           inherit inputs;
         };
         modules = [
-          ./home.nix
-          ./modules/home/zsh/zsh.nix
-          ./modules/home/neovim/neovim.nix
-          ./modules/home/git/git.nix
-          ./modules/home/wezterm/wezterm.nix
-          ./modules/home/tor-browser/tor-browser.nix
+          ./home-manager/home.nix
+          ./home-manager/modules/home/zsh/zsh.nix
+          ./home-manager/modules/home/neovim/neovim.nix
+          ./home-manager/modules/home/git/git.nix
+          ./home-manager/modules/home/wezterm/wezterm.nix
+          ./home-manager/modules/home/tor-browser/tor-browser.nix
         ];
       };
     };

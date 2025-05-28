@@ -29,6 +29,7 @@
     parsec-bin
     calcurse
     morgen
+    notion-app-enhanced
   ];
   
   home.file = {
