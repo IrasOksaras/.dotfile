@@ -8,17 +8,7 @@
   };
   programs.home-manager.enable = true;
 
-  programs.chromium = {
-    enable = true;
-  };
-
-  programs.ncspot = {
-    enable = true;
-  };
-
   home.packages = with pkgs; [
-    gns3-gui
-    gns3-server
     ranger
     screen
     spotify
@@ -29,7 +19,6 @@
     parsec-bin
     calcurse
     morgen
-    notion-app-enhanced
   ];
   
   home.file = {

@@ -19,8 +19,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   hardware = {
-    bluetooth.enable = true;
-    bluetooth.powerOnBoot = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
   };
 
   networking.hostName = "ThinkBook-E14-G7"; # Define your hostname.
@@ -151,10 +153,7 @@
   environment.systemPackages = with pkgs; [
     wayland
     wl-clipboard-rs
-    ubridge
     busybox
-    dynamips
-    qemu
     docker-compose
     virt-manager
     # wayland-protocols
