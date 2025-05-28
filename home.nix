@@ -8,10 +8,6 @@
   };
   programs.home-manager.enable = true;
 
-  programs.wezterm = {
-    enable = true;
-  };
-
   programs.chromium = {
     enable = true;
   };

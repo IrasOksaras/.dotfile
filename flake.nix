@@ -53,6 +53,7 @@
           ./modules/home/zsh/zsh.nix
           ./modules/home/neovim/neovim.nix
           ./modules/home/git/git.nix
+          ./modules/home/wezterm/wezterm.nix
           ./modules/home/tor-browser/tor-browser.nix
         ];
       };
