@@ -39,11 +39,16 @@
       ];
 
       shellAliases = {
+        lg = "lazygit";
       };
 
       initContent = ''
         # shellの言語を英語に
-        export LANG=C
+        export LANG=en_US.UTF-8
+        export LC_ALL=en_US.UTF-8
+
+        bindkey -v
+        bindkey -M viins "jk" vi-cmd-mode
 
         # Enable Powerlevel10k instant prompt
         if [[ -r "${config.home.homeDirectory}/.cache/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then

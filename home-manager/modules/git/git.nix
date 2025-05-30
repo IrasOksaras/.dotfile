@@ -15,6 +15,10 @@
 
     lazygit = {
       enable = true;
+      settings = {
+        gui = {
+        };
+      };
     };
   };
 }

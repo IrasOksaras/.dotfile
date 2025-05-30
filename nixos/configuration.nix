@@ -19,8 +19,16 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   hardware = {
-    bluetooth.enable = true;
-    bluetooth.powerOnBoot = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      settings = {
+        General = {
+          ControlleMode = "le";
+          Experimental = true;
+        };
+      };
+    };
   };
 
   networking.hostName = "ThinkBook-E14-G7"; # Define your hostname.
@@ -138,7 +146,7 @@
     shell = pkgs.zsh;
     createHome = true;
     uid = 1000;
-    extraGroups = [ "wheel" "libvirtd" "kvm" "wireshark" "ubridges" "network" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "libvirtd" "kvm" "wireshark" "ubridges" "network" "dialout" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       ocs-url
       discord
