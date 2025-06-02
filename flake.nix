@@ -54,7 +54,7 @@
           ./home-manager/modules/neovim/neovim.nix
           ./home-manager/modules/git/git.nix
           ./home-manager/modules/wezterm/wezterm.nix
-          ./home-manager/modules/tor-browser/tor-browser.nix
+          ./home-manager/modules/web-browser/web-browser.nix
         ];
       };
     };

@@ -1,6 +1,7 @@
 {pkgs, ...}: {
 
   home.packages = with pkgs; [
+    (chromium.override { enableWideVine = true; })
     tor-browser
   ];
 

@@ -8,10 +8,6 @@
   };
   programs.home-manager.enable = true;
 
-  programs.chromium = {
-    enable = true;
-  };
-
   programs.ncspot = {
     enable = true;
   };

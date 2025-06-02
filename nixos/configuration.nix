@@ -24,7 +24,7 @@
       powerOnBoot = true;
       settings = {
         General = {
-          ControlleMode = "le";
+          ControllerMode = "le";
           Experimental = true;
         };
       };
@@ -148,32 +148,32 @@
     uid = 1000;
     extraGroups = [ "wheel" "libvirtd" "kvm" "wireshark" "ubridges" "network" "dialout" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      ocs-url
-      discord
-      zoom-us
-      remmina
       ciscoPacketTracer8
+      discord
+      ocs-url
+      remmina
+      zoom-us
     ];
   };
 
   environment.systemPackages = with pkgs; [
-    wayland
-    wl-clipboard-rs
-    ubridge
-    busybox
-    dynamips
-    qemu
-    docker-compose
-    virt-manager
+    # rnnoise-plugin
     # wayland-protocols
-    tree
-    wget
     aria2
-    nyx
+    busybox
+    docker-compose
+    dynamips
     htop
     intel-gpu-tools
-    # rnnoise-plugin
     nur.repos.ataraxiasjel.waydroid-script
+    nyx
+    qemu
+    tree
+    ubridge
+    virt-manager
+    wayland
+    wget
+    wl-clipboard-rs
   ];
 
   users.groups.wireshark = {

@@ -1,8 +1,8 @@
 local wezterm = require 'wezterm'
-
 local config = wezterm.config_builder()
 
 config.use_ime = true
+treat_east_asian_ambiguous_width_as_wide = true
 
 config.default_prog = { 'zsh' }
 
@@ -14,6 +14,20 @@ config.font = wezterm.font("HackGen Console NF", {weight="Regular", stretch="Nor
 
 config.color_scheme = 'Palenight (Gogh)'
 
-config.exit_behavior = 'Hold'
+config.exit_behavior = 'CloseOnCleanExit'
+
+--config.serial_ports = {}
+--
+--for _, val in ipairs(wezterm.read_dir "dir") do
+--  if string.find(val, "/dev/ttyUSB%d*") then
+--    data = {
+--      name = string.gsub(val, "/dev/ttyUSB", "usb"),
+--      port = val,
+--      baud = 9600,
+--    }
+--
+--    table.insert(config.serial_ports, data)
+--    end
+--  end
 
 return config
