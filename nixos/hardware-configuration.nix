@@ -8,18 +8,18 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-  boot.kernelPatches = [ {
-    name = "LEAudio-config";
-    patch = null;
-    extraConfig = ''
-      BT_ISO_CHANNEL m
-      '';
-  } ];
+  # boot.kernelPatches = [ {
+  #   name = "LEAudio-config";
+  #   patch = null;
+  #   extraConfig = ''
+  #     BT_ISO y
+  #     '';
+  # } ];
 
 
   fileSystems."/" =

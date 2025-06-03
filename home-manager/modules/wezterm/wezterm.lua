@@ -1,6 +1,8 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
+config.debug_key_events = true
+
 config.use_ime = true
 treat_east_asian_ambiguous_width_as_wide = true
 
@@ -15,6 +17,14 @@ config.font = wezterm.font("HackGen Console NF", {weight="Regular", stretch="Nor
 config.color_scheme = 'Palenight (Gogh)'
 
 config.exit_behavior = 'CloseOnCleanExit'
+
+config.keys = {
+  {
+    key = "CapsLock",
+    mods = "",
+    action = wezterm.action.SendKey { key = "Control" },
+  },
+}
 
 --config.serial_ports = {}
 --

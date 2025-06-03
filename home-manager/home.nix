@@ -26,6 +26,7 @@
     calcurse
     morgen
     notion-app-enhanced
+    kicad
   ];
   
   home.file = {
