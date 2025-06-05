@@ -24,8 +24,9 @@
       powerOnBoot = true;
       settings = {
         General = {
-          ControllerMode = "le";
+          # ControllerMode = "le";
           Experimental = true;
+          KernelExperimental = true;
         };
       };
     };
@@ -146,7 +147,7 @@
     shell = pkgs.zsh;
     createHome = true;
     uid = 1000;
-    extraGroups = [ "wheel" "libvirtd" "kvm" "wireshark" "ubridges" "network" "dialout" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "lp" "libvirtd" "kvm" "wireshark" "ubridges" "network" "dialout" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       ciscoPacketTracer8
       discord
@@ -245,6 +246,7 @@
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+    package = pkgs.pipewire.override { bluezSupport = true; };
     extraConfig = {
       pipewire = {
         adfust-sample-rate = {
@@ -330,7 +332,7 @@
   # power management
   powerManagement.powertop.enable = true;
   services = {
-    # 競合する為無効化
+    # tlpと競合する為無効化
     power-profiles-daemon.enable = false;
     thermald.enable = true;
     tlp = {
