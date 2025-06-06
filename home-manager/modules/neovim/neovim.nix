@@ -26,17 +26,19 @@
   programs.nixvim = {
     enable = true;
     viAlias = true;
-    dependencies = {
-      tree-sitter = {
-        enable = true;
-        package = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
-      };
-    };
+    vimAlias = true;
+    # dependencies = {
+    #   tree-sitter = {
+    #     enable = true;
+    #     package = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
+    #   };
+    # };
     extraPlugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
     ];
     extraPackages = with pkgs; [
       deno
+      nixd
     ];
     extraConfigLua = builtins.readFile ./init.lua;
   };

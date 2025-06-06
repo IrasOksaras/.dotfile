@@ -1,6 +1,5 @@
-{config, pkgs, ...}:
+{config, pkgs, spkgs, ...}: {
 
-{
   home = rec {
     username = "Iras";
     homeDirectory = "/home/${username}";
@@ -12,23 +11,23 @@
     enable = true;
   };
 
-  home.packages = with pkgs; [
-    gns3-gui
-    gns3-server
-    ranger
-    screen
-    spotify
-    slack
-    terraform
-    ansible
-    drawio
-    parsec-bin
-    calcurse
-    morgen
-    notion-app-enhanced
-    kicad
+  home.packages = [
+    pkgs.gns3-gui
+    pkgs.gns3-server
+    pkgs.ranger
+    pkgs.screen
+    pkgs.spotify
+    pkgs.slack
+    pkgs.terraform
+    pkgs.ansible
+    pkgs.drawio
+    pkgs.calcurse
+    pkgs.morgen
+    pkgs.notion-app-enhanced
+    pkgs.kicad
+    spkgs.parsec-bin
   ];
-  
+
   home.file = {
     ".config/ranger/rc.conf".text = ''
       set preview_images true
