@@ -1,14 +1,16 @@
 {
   programs.nixvim.plugins = {
-    treesitter = {
+    telescope = {
       enable = true;
     };
-    treesitter-refactor = {
+    web-devicons = {
       enable = true;
-      highlightDefinitions = {
+    };
+    mini = {
+      modules.icons = {
         enable = true;
       };
-      highlightCurrentScope = {
+      mockDevIcons = {
         enable = true;
       };
     };
