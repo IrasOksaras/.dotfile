@@ -1,6 +1,6 @@
 {
   programs.nixvim.plugins = {
-    treesitter = {
+    lazygit = {
       enable = true;
     };
   };
