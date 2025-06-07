@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./plugins/treesitter.nix
+  ];
+}

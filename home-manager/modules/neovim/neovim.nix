@@ -2,6 +2,7 @@
 
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
+    ./plugins.nix
   ];
 
   # programs.neovim = {
@@ -25,20 +26,19 @@
 
   programs.nixvim = {
     enable = true;
+    defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    luaLoader.enable = true;
     # dependencies = {
     #   tree-sitter = {
     #     enable = true;
     #     package = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
     #   };
     # };
-    extraPlugins = with pkgs.vimPlugins; [
-      nvim-treesitter.withAllGrammars
-    ];
-    extraPackages = with pkgs; [
-      deno
-      nixd
+    extraPackages =  [
+      pkgs.deno
+      pkgs.nixd
     ];
     extraConfigLua = builtins.readFile ./init.lua;
   };

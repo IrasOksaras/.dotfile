@@ -11,7 +11,7 @@
       enable = true;
       extensions = with pkgs; [gh-markdown-preview];
       settings = {
-        editor = "nvim";
+        editor = "nixvim";
       };
     };
 
