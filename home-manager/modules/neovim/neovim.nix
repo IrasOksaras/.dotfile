@@ -3,10 +3,7 @@
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./keymap.nix
-<<<<<<< HEAD
     ./colors.nix
-=======
->>>>>>> refs/remotes/origin/main
     ./plugins.nix
   ];
 
@@ -35,18 +32,15 @@
     viAlias = true;
     vimAlias = true;
     luaLoader.enable = true;
-<<<<<<< HEAD
     clipboard = {
       register = "unnamedplus";
     };
-=======
     # dependencies = {
     #   tree-sitter = {
     #     enable = true;
     #     package = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
     #   };
     # };
->>>>>>> refs/remotes/origin/main
     extraPackages = [
       pkgs.deno
       pkgs.nixd
