@@ -2,6 +2,7 @@
 
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
+    ./keymap.nix
     ./plugins.nix
   ];
 
@@ -36,7 +37,7 @@
     #     package = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
     #   };
     # };
-    extraPackages =  [
+    extraPackages = [
       pkgs.deno
       pkgs.nixd
     ];
