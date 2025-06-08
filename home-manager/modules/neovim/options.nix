@@ -20,5 +20,8 @@
       shiftwidth = 2;
       textwidth = 0;
     };
+    extraConfigLua = ''
+      vim.cmd("set list listchars=tab:▸\\ ,eol:↲,space:･")
+      '';
   };
 }

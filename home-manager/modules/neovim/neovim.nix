@@ -37,18 +37,9 @@
     withPython3 = false;
     withRuby = false;
     luaLoader.enable = true;
-    # dependencies = {
-    #   tree-sitter = {
-    #     enable = true;
-    #     package = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
-    #   };
-    # };
     extraPackages = [
       pkgs.deno
       pkgs.nixd
     ];
-    extraConfigLua = ''
-      vim.cmd("set list listchars=tab:▸\\ ,eol:↲,space:･")
-      '';
   };
 }
