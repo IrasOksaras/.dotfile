@@ -11,7 +11,7 @@
       enable = true;
       extensions = with pkgs; [gh-markdown-preview];
       settings = {
-        editor = "nixvim";
+        editor = "nvim";
       };
     };
 
@@ -24,6 +24,9 @@
         };
         git = {
           autoFetch = false;
+        };
+        os = {
+          editPreset = "nvim";
         };
       };
     };
