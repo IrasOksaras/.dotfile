@@ -2,6 +2,7 @@
 
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
+    ./options.nix
     ./keymap.nix
     ./colors.nix
     ./plugins.nix
@@ -31,10 +32,11 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    withNodeJs = false;
+    withPerl = false;
+    withPython3 = false;
+    withRuby = false;
     luaLoader.enable = true;
-    clipboard = {
-      register = "unnamedplus";
-    };
     # dependencies = {
     #   tree-sitter = {
     #     enable = true;
@@ -45,6 +47,8 @@
       pkgs.deno
       pkgs.nixd
     ];
-    extraConfigLua = builtins.readFile ./init.lua;
+    extraConfigLua = ''
+      vim.cmd("set list listchars=tab:▸\\ ,eol:↲,space:･")
+      '';
   };
 }
