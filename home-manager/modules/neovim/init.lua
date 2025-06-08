@@ -1,6 +1,3 @@
--- luaファイルをバイトコンパイルする(高速化？)
-vim.loader.enable()
-
 require("base")
 require("keymap")
 require("colors")
