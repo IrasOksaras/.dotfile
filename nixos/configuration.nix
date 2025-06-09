@@ -13,7 +13,6 @@
   #   common-gpu-intel-meteor-lake
   #   common-ssd
   # ]);
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -49,7 +48,8 @@
 
   # Select internationalisation properties.
   i18n = {
-    defaultLocale = "ja_JP.UTF-8";
+    defaultLocale = "en_US.UTF-8";
+     extraLocales = [ "ja_JP.UTF-8/UTF-8" ];
     inputMethod = {
       enable = true;
       type = "fcitx5";

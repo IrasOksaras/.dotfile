@@ -3,8 +3,20 @@
   programs = {
     zsh = {
       enable = true;
-      autosuggestion.enable = true;
       enableCompletion = true;
+      autosuggestion = {
+        enable = true;
+      };
+      syntaxHighlighting = {
+        enable = true;
+        highlighters = [ "pattern" "root" ];
+        styles = {
+          root = "bg=red";
+        };
+        patterns = {
+          "rm -rf *" = "fg=white,bold,bg=red";
+        };
+      };
       
       oh-my-zsh = {
         enable = true;
@@ -16,15 +28,6 @@
           name = "powerlevel10k";
           src = pkgs.zsh-powerlevel10k;
           file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-        }
-        {
-          name = "zsh-syntax-highlighting";
-          src = pkgs.fetchFromGitHub {
-            owner = "zsh-users";
-            repo = "zsh-syntax-highlighting";
-            rev = "0.7.1";
-            sha256 = "03r6hpb5fy4yaakqm3lbf4xcvd408r44jgpv4lnzl9asp4sb9qc0";
-          };
         }
         {
           name = "zsh-nix-shell";
@@ -55,9 +58,6 @@
         # shellの言語を英語に
         export LANG=en_US.UTF-8
         export LC_ALL=en_US.UTF-8
-
-        bindkey -v
-        bindkey -M viins "jk" vi-cmd-mode
 
         # Enable Powerlevel10k instant prompt
         if [[ -r "${config.home.homeDirectory}/.cache/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
