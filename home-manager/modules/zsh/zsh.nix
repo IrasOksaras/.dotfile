@@ -36,6 +36,15 @@
             sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
           };
         }
+        {
+          name = "zsh-bench";
+          src = pkgs.fetchFromGitHub {
+            owner = "romkatv";
+            repo = "zsh-bench";
+            rev = "master";
+            sha256 = "ZoALQoTaKhmEEdGne4obZ+qiUmloCbnjY/VL0q1c6Ok=";
+          };
+        }
       ];
 
       shellAliases = {
