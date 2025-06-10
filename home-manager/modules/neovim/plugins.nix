@@ -5,6 +5,8 @@
     ./plugins/telescope.nix
     ./plugins/lualine.nix
     ./plugins/indent-blankline.nix
+    ./plugins/nvim-autopairs.nix
+    ./plugins/ts-autotag.nix
     # ./plugins/floaterm.nix
     ./plugins/toggleterm.nix
   ];
