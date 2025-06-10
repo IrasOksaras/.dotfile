@@ -11,14 +11,9 @@
       fileencoding = "utf-8";
       number = true;
       cursorline = true;
-      autoindent = true;
-      cindent = true;
-      smartindent = true;
       expandtab = true;
-      smarttab = true;
       tabstop = 2;
       shiftwidth = 2;
-      textwidth = 0;
     };
     extraConfigLua = ''
       vim.cmd("set list listchars=tab:▸\\ ,eol:↲,space:･")
