@@ -15,15 +15,6 @@
           noremap = true;
         };
       }
-      {
-        action = "<cmd>LazyGit<cr>";
-        key = "<leader>gg";
-        mode = [ "n" ];
-        options = {
-          silent = true;
-          noremap = true;
-        };
-      }
     ];
   };
 }

@@ -18,7 +18,6 @@
         };
         patterns = {
           "rm -rf *" = "fg=white,bold,bg=red";
-          "rm *" = "bg=red";
         };
       };
       
