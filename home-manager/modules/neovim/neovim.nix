@@ -6,6 +6,7 @@
     ./keymap.nix
     ./colors.nix
     ./plugins.nix
+    ./lsp.nix
   ];
 
   # programs.neovim = {
@@ -39,6 +40,7 @@
     luaLoader.enable = true;
     extraPackages = [
       pkgs.deno
+      pkgs.ripgrep
       pkgs.nixd
     ];
   };
