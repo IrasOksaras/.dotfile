@@ -4,6 +4,7 @@
     ./plugins/highlight-colors.nix
     ./plugins/indent-blankline.nix
     ./plugins/lazygit.nix
+    ./plugins/lsp.nix
     ./plugins/lualine.nix
     ./plugins/nvim-autopairs.nix
     ./plugins/telescope.nix

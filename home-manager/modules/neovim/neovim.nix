@@ -6,7 +6,6 @@
     ./keymap.nix
     ./colors.nix
     ./plugins.nix
-    ./lsp.nix
   ];
 
   # programs.neovim = {
