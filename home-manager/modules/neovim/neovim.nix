@@ -39,8 +39,8 @@
     luaLoader.enable = true;
     extraPackages = [
       pkgs.deno
+      pkgs.fd
       pkgs.ripgrep
-      pkgs.nixd
     ];
   };
 }
