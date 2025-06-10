@@ -1,6 +1,7 @@
 {
   imports = [
     ./plugins/comment.nix
+    ./plugins/ddc.nix
     ./plugins/highlight-colors.nix
     ./plugins/indent-blankline.nix
     ./plugins/lazygit.nix
