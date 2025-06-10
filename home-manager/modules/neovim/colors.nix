@@ -1,12 +1,12 @@
 {
   programs.nixvim = {
     colorschemes = {
-      monokai-pro = {
+      tokyonight = {
         enable = true;
         settings = {
-          filter = "octagon";
+          style = "moon";
           terminal_colors = true;
-          transparent_background = true;
+          transparent = true;
         };
       };
     };
