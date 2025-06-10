@@ -1,4 +1,4 @@
-local wezterm = require 'wezterm'
+local wezterm = require "wezterm"
 local config = wezterm.config_builder()
 
 config.debug_key_events = true
@@ -6,17 +6,17 @@ config.debug_key_events = true
 config.use_ime = true
 treat_east_asian_ambiguous_width_as_wide = true
 
-config.default_prog = { 'zsh' }
+config.default_prog = { "zsh" }
 
-config.window_background_opacity = 0.85
-config.text_background_opacity = 0.8
+config.window_background_opacity = 0.95
+config.text_background_opacity = 0.9
 
 config.font_size = 12.5
 config.font = wezterm.font("HackGen Console NF", {weight="Regular", stretch="Normal"})
 
-config.color_scheme = 'Palenight (Gogh)'
+config.color_scheme = "Palenight (Gogh)"
 
-config.exit_behavior = 'CloseOnCleanExit'
+config.exit_behavior = "CloseOnCleanExit"
 
 config.keys = {
   {
