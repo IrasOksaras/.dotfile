@@ -7,6 +7,7 @@
     ./plugins/indent-blankline.nix
     ./plugins/nvim-autopairs.nix
     ./plugins/ts-autotag.nix
+    ./plugins/comment.nix
     # ./plugins/floaterm.nix
     ./plugins/toggleterm.nix
   ];
