@@ -1,5 +1,5 @@
 {
-  programs.nvim.plugins = {
+  programs.nixvim.plugins = {
     ts-autotag = {
       enable = true;
     };
