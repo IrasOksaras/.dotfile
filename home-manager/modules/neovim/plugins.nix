@@ -5,6 +5,7 @@
     ./plugins/telescope.nix
     ./plugins/lualine.nix
     ./plugins/indent-blankline.nix
-    ./plugins/floaterm.nix
+    # ./plugins/floaterm.nix
+    ./plugins/toggleterm.nix
   ];
 }

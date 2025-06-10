@@ -9,12 +9,16 @@
       };
       syntaxHighlighting = {
         enable = true;
-        highlighters = [ "pattern" "root" ];
+        highlighters = [ "pattern" "brackets" ];
         styles = {
-          root = "bg=red";
+          bracket-level-1 = "fg=blue,bold";
+          bracket-level-2 = "fg=red,bold";
+          bracket-level-3 = "fg=yellow,bold";
+          bracket-level-4 = "fg=magenta,bold";
         };
         patterns = {
           "rm -rf *" = "fg=white,bold,bg=red";
+          "rm *" = "bg=red";
         };
       };
       
