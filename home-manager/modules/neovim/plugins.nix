@@ -1,14 +1,14 @@
 {
   imports = [
-    ./plugins/treesitter.nix
-    ./plugins/lazygit.nix
-    ./plugins/telescope.nix
-    ./plugins/lualine.nix
-    ./plugins/indent-blankline.nix
-    ./plugins/nvim-autopairs.nix
-    ./plugins/ts-autotag.nix
     ./plugins/comment.nix
-    # ./plugins/floaterm.nix
+    ./plugins/highlight-colors.nix
+    ./plugins/indent-blankline.nix
+    ./plugins/lazygit.nix
+    ./plugins/lualine.nix
+    ./plugins/nvim-autopairs.nix
+    ./plugins/telescope.nix
     ./plugins/toggleterm.nix
+    ./plugins/treesitter.nix
+    ./plugins/ts-autotag.nix
   ];
 }
