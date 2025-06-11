@@ -6,6 +6,18 @@
         extensions = {
           file-browser = {
             enable = true;
+            settings = {
+              use_fd = true;
+            };
+          };
+          fzf-native = {
+            enable = true;
+            settings = {
+              fuzzy = true;
+              override_generic_sorter = true;
+              override_file_soter = true;
+              case_mode = "smart_case";
+            };
           };
         };
         settings = {
@@ -13,6 +25,11 @@
             file_ignore_patterns = [
               "^/git/"
             ];
+          };
+          pickers = {
+            find_files = {
+              hidden = true;
+            };
           };
         };
       };
