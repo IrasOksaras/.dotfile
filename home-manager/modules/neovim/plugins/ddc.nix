@@ -140,35 +140,32 @@ in {
 
       call ddc#custom#patch_global('ui', 'native')
 
-      inoremap <expr> <TAB>
-      \ pumvisible() ? '<C-n>' :
-      \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-      \ '<TAB>' : ddc#map#manual_complete()
-
-      inoremap <expr> <S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
-
       call ddc#enable()
     '';
 
-    # keymaps = [
-    #   {
-    #     action = "<cmd>call pum#map#insert_relative(+1)<CR>";
-    #     key = "<TAB>";
-    #     mode = [ "i" ];
-    #     options = {
-    #       noremap = true;
-    #       silent = true;
-    #     };
-    #   }
-    #   {
-    #     action = "<cmd>call pum#map#insert_relative(-1)<CR>";
-    #     key = "<S-Tab>";
-    #     mode = [ "i" ];
-    #     options = {
-    #       noremap = true;
-    #       silent = true;
-    #     };
-    #   }
+    keymaps = [
+      {
+        action = ''
+         pumvisible() ? '<C-n>' : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ? '<TAB>' : ddc#map#manual_complete()
+        '';
+        key = "<TAB>";
+        mode = [ "i" ];
+        options = {
+          silent = true;
+          noremap = true;
+          expr = true;
+        };
+      }
+      {
+        action = "pumvisible() ? '<C-p>' : '<C-h>'";
+        key = "<S-Tab>";
+        mode = [ "i" ];
+        options = {
+          silent = true;
+          noremap = true;
+          expr = true;
+        };
+      }
     #   {
     #     action = "<cmd>call pum#confirm()<CR>";
     #     key = "C-y";
@@ -178,6 +175,6 @@ in {
     #       silent = true;
     #     };
     #   }
-    # ];
+    ];
   };
 }
