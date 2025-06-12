@@ -175,6 +175,7 @@
     wayland
     wget
     wl-clipboard-rs
+    kdePackages.print-manager
   ];
 
   users.groups.wireshark = {
@@ -269,6 +270,22 @@
 
   services.flatpak.enable = true;
   xdg.portal.enable = true;
+
+  # printerSetting
+  services = {
+    printing = {
+      enable = true;
+      drivers = [
+        pkgs.epson-escpr2
+        pkgs.epson-escpr
+      ];
+    };
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
