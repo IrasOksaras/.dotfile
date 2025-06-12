@@ -7,6 +7,12 @@
         nixd = {
           enable = true;
         };
+        lua_ls = {
+          enable = true;
+        };
+        pylsp = {
+          enable = true;
+        };
         html = {
           enable = true;
         };
