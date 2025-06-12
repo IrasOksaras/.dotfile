@@ -1,4 +1,5 @@
 {pkgs, ...}: let
+
   ddc-vim = pkgs.vimUtils.buildVimPlugin {
     name = "ddc-vim";
     src = pkgs.fetchFromGitHub {
@@ -62,24 +63,6 @@
       sha256 = "CFkfhRmF17lo8+sxZb80UnA79Hzc8Qvl5tQeYE8TC+w=";
     };
   };
-  pum-vim = pkgs.vimUtils.buildVimPlugin {
-    name = "pum-vim";
-    src = pkgs.fetchFromGitHub {
-      owner = "Shougo";
-      repo = "pum.vim";
-      rev = "master";
-      sha256 = "zr7ne+Gh3WvNdOEzmz28ZZdcV50whSD3ZGyzCeXAlgs=";
-    };
-  };
-  ddc-ui-pum = pkgs.vimUtils.buildVimPlugin {
-    name = "ddc-ui-pum";
-    src = pkgs.fetchFromGitHub {
-      owner = "Shougo";
-      repo = "ddc-ui-pum";
-      rev = "master";
-      sha256 = "5T+QAVF4H5Tp1asG4IsfbLI+grmOAVT7yDoHVdcfQG4=";
-    };
-  };
   ddc-ui-native = pkgs.vimUtils.buildVimPlugin {
     name = "ddc-ui-native";
     src = pkgs.fetchFromGitHub {
@@ -110,45 +93,91 @@ in {
       ddc-filter-converter_remove_overlap
       ddc-filter-matcher_head
       ddc-filter-sorter_rank
-      pum-vim
-      ddc-ui-pum
       ddc-ui-native
     ];
-    extraConfigLua = ''
-      vim.fn["ddc#custom#patch_global"]('ui', 'pum')
-      vim.fn["ddc#custom#patch_global"]('sources', {'lsp', 'around', 'file'})
-      vim.fn["ddc#custom#patch_global"]('sourceOptions', {
-        _ = {
-          matchers = {'matcher_head'},
-          sorters = {'sorter_rank'},
-          converters = {'converter_remove_overlap'}
-        },
-      })
 
-      vim.fn["ddc#enable"]()
+    extraConfigLua = ''
+      -- vim.fn["ddc#custom#patch_global"]('ui', 'pum'j
+      -- vim.fn["ddc#custom#patch_global"]('sources', {'lsp', 'around', 'file'})
+      -- vim.fn["ddc#custom#patch_global"]('sourceOptions', {
+      --   _ = {
+      --     matchers = {'matcher_head'},
+      --     sorters = {'sorter_rank'},
+      --     converters = {'converter_remove_overlap'}
+      --   },
+      --   around = {
+      --     mark = {'around'}
+      --   },
+      -- })
+      --
+      -- vim.fn["ddc#enable"]()
     '';
-    keymaps = [
-      {
-        action = "<cmd>call pum#map#insert_relative(+1)<CR>";
-        key = "C-n";
-        mode = [ "i" ];
-        options = {
-        };
-      }
-      {
-        action = "<cmd>call pum#map#insert_relative(-1)<CR>";
-        key = "C-n";
-        mode = [ "i" ];
-        options = {
-        };
-      }
-      {
-        action = "<cmd>call pum#confirm()<CR>";
-        key = "C-y";
-        mode = [ "i" ];
-        options = {
-        };
-      }
-    ];
+
+    extraConfigVim = ''
+      call ddc#custom#patch_global('sources', [
+        \ 'around',
+        \ 'lsp',
+        \ 'file'
+        \ ])
+
+      call ddc#custom#patch_global('sourceOptions', {
+        \ '_': {
+        \   'matchers': ['matcher_head'],
+        \   'sorters': ['sorter_rank'],
+        \   'converters': ['converter_remove_overlap'],
+        \ },
+        \ 'around': {'mark': 'around'},
+        \ 'lsp': {
+        \   'mark': 'lsp',
+        \   'matchers': ['matcher_head'],
+        \   'forceCompletionPattern': '\.|:|->|"\w+/*'
+        \ },
+        \ 'file': {
+        \   'mark': 'file',
+        \   'isVolatile': v:true,
+        \   'forceCompletionPattern': '\S/\S*'
+        \ }})
+
+      call ddc#custom#patch_global('ui', 'native')
+
+      inoremap <expr> <TAB>
+      \ pumvisible() ? '<C-n>' :
+      \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+      \ '<TAB>' : ddc#map#manual_complete()
+
+      inoremap <expr> <S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
+
+      call ddc#enable()
+    '';
+
+    # keymaps = [
+    #   {
+    #     action = "<cmd>call pum#map#insert_relative(+1)<CR>";
+    #     key = "<TAB>";
+    #     mode = [ "i" ];
+    #     options = {
+    #       noremap = true;
+    #       silent = true;
+    #     };
+    #   }
+    #   {
+    #     action = "<cmd>call pum#map#insert_relative(-1)<CR>";
+    #     key = "<S-Tab>";
+    #     mode = [ "i" ];
+    #     options = {
+    #       noremap = true;
+    #       silent = true;
+    #     };
+    #   }
+    #   {
+    #     action = "<cmd>call pum#confirm()<CR>";
+    #     key = "C-y";
+    #     mode = [ "i" ];
+    #     options = {
+    #       noremap = true;
+    #       silent = true;
+    #     };
+    #   }
+    # ];
   };
 }
