@@ -12,12 +12,20 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    wezterm = {
+      url = "github:wezterm/wezterm?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     hyprland = {
       url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+    walker = {
+      url = "github:abenz1267/walker";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     xremap = {
@@ -29,6 +37,7 @@
   outputs = inputs:
   let
     system = "x86_64-linux";
+    username = "Iras";
     overlays = [ inputs.nur.overlays.default ];
     pkgs = import inputs.nixpkgs-unstable { 
       config.allowUnfree = true;
@@ -43,7 +52,7 @@
       myNixOS = inputs.nixpkgs-unstable.lib.nixosSystem {
         inherit system pkgs;
         specialArgs = {
-          inherit inputs spkgs;
+          inherit inputs username spkgs;
         };
         modules = [
           ./nixos/configuration.nix
@@ -55,10 +64,11 @@
       myHome = inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
         extraSpecialArgs = {
-          inherit inputs spkgs;
+          inherit inputs username spkgs;
         };
         modules = [
           ./home-manager/home.nix
+          ./home-manager/modules/wm.nix
           ./home-manager/modules/git/git.nix
           ./home-manager/modules/ncspot/ncspot.nix
           ./home-manager/modules/neovim/neovim.nix

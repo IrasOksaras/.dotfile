@@ -25,6 +25,7 @@
     pkgs.morgen
     pkgs.notion-app-enhanced
     pkgs.kicad
+    pkgs.grimblast
     spkgs.parsec-bin
   ];
 

@@ -1,15 +1,17 @@
 local wezterm = require "wezterm"
 local config = wezterm.config_builder()
 
-config.debug_key_events = true
+config.enable_wayland = true
+config.enable_tab_bar = false
 
 config.use_ime = true
-treat_east_asian_ambiguous_width_as_wide = true
+-- config.treat_east_asian_ambiguous_width_as_wide = true
 
 config.default_prog = { "zsh" }
 
-config.window_background_opacity = 0.95
-config.text_background_opacity = 0.9
+config.window_background_opacity = 0.25
+-- config.window_background_opacity = 0.9
+config.text_background_opacity = 1.0
 
 config.font_size = 12.7
 config.font = wezterm.font("HackGen Console NF", {weight="Regular", stretch="Normal"})

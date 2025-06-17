@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-{ inputs, config, lib, pkgs, spkgs, ... }:
+{ inputs, config, lib, pkgs, spkgs, username, ... }:
 
 {
   imports = [ 
@@ -42,6 +42,12 @@
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
 
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+  };
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -49,16 +55,20 @@
   # Select internationalisation properties.
   i18n = {
     defaultLocale = "en_US.UTF-8";
-     extraLocales = [ "ja_JP.UTF-8/UTF-8" ];
+    extraLocales = [ "ja_JP.UTF-8/UTF-8" ];
     inputMethod = {
       enable = true;
       type = "fcitx5";
-      fcitx5.addons = [pkgs.fcitx5-mozc];
+      fcitx5 = {
+        waylandFrontend = true;
+        plasma6Support = true;
+        addons = [pkgs.fcitx5-mozc];
+      };
     };
   };
 
   services.xremap = {
-    userName = "Iras";
+    userName = "${username}";
     serviceMode = "system";
     config = {
       modmap = [
@@ -68,6 +78,12 @@
             CapsLock = "Ctrl_L";
           };
         }
+        # {
+        #   name = "Ctrl_L is SUPER";
+        #   remap = {
+        #     Ctrl_L = "Super_R";
+        #   };
+        # }
       ];
     };
   };
@@ -95,12 +111,12 @@
 
   # フォント設定
   fonts = {
-    packages = with pkgs; [
-      noto-fonts-cjk-serif
-      noto-fonts-cjk-sans
-      twemoji-color-font
-      nerd-fonts.noto
-      hackgen-nf-font
+    packages = [
+      pkgs.noto-fonts-cjk-serif
+      pkgs.noto-fonts-cjk-sans
+      pkgs.twemoji-color-font
+      pkgs.nerd-fonts.noto
+      pkgs.hackgen-nf-font
     ];
     fontDir.enable = true;
     fontconfig = {
@@ -122,10 +138,11 @@
   services = {
     displayManager.sddm.enable = true;
     desktopManager.plasma6.enable = true;
-    # xserver = {
-    #   enable = true;
-    #   xkb.layout = "jp";
-    # };
+    xserver = {
+      enable = true;
+      xkb.layout = "jp";
+      xkb.model = "jp106";
+    };
   };
 
   environment.variables = {
@@ -142,18 +159,27 @@
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.Iras = {
+  users.users.${username} = {
     isNormalUser = true;
     shell = pkgs.zsh;
     createHome = true;
     uid = 1000;
-    extraGroups = [ "wheel" "lp" "libvirtd" "kvm" "wireshark" "ubridges" "network" "dialout" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      ciscoPacketTracer8
-      discord
-      ocs-url
-      remmina
-      zoom-us
+    extraGroups = [
+      "dialout"
+      "docker"
+      "kvm"
+      "libvirtd"
+      "lp"
+      "network"
+      "ubridges"
+      "wheel"
+      "wireshark"
+    ];
+    packages = [
+      pkgs.ciscoPacketTracer8
+      pkgs.discord
+      pkgs.remmina
+      pkgs.zoom-us
     ];
   };
 
@@ -175,6 +201,7 @@
     wayland
     wget
     wl-clipboard-rs
+    unityhub
     kdePackages.print-manager
   ];
 
@@ -220,7 +247,7 @@
     libvirtd.enable = true;
     waydroid.enable = true;
   };
-  users.extraGroups.vboxusers.members = ["Iras"];
+  users.extraGroups.vboxusers.members = ["${username}"];
 
   # tailscale（VPN）を有効化
 
@@ -292,17 +319,17 @@
 
   # programs.dconf.enable = true;
 
-  # environment.sessionVariables = {
+  environment.sessionVariables = {
   #   # Waylandを優先
   #   MOZ_ENABLE_WAYLAND = "1";
-  #   NIXOS_OZONE_WL = "1";  # Electronアプリのためのオゾンバックエンド
+    NIXOS_OZONE_WL = "1";  # Electronアプリのためのオゾンバックエンド
   #   
   #   # IMEの設定
   #   GTK_IM_MODULE = "fcitx";  # または "ibus"
   #   QT_IM_MODULE = "fcitx";   # または "ibus"
   #   XMODIFIERS = "@im=fcitx"; # または "@im=ibus"
   #   SDL_IM_MODULE = "fcitx";  # または "ibus"
-  # };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

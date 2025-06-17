@@ -22,6 +22,7 @@
         };
         settings = {
           defaults = {
+            winblend = 0;
             file_ignore_patterns = [
               "^/git/"
             ];
@@ -47,6 +48,14 @@
         };
       };
     };
+
+    extraConfigLua = ''
+      vim.cmd([[highlight TelescopeNormal guibg=None]])
+      vim.cmd([[highlight TelescopeBorder guibg=None]])
+      vim.cmd([[highlight TelescopePromptBorder guibg=None]])
+      vim.cmd([[highlight TelescopeResultsBorder guibg=None]])
+      vim.cmd([[highlight TelescopePreviewBorder guibg=None]])
+    '';
 
     keymaps = [
       {
