@@ -7,6 +7,9 @@
         nixd = {
           enable = true;
         };
+        bashls = {
+          enable = true;
+        };
         lua_ls = {
           enable = true;
         };
