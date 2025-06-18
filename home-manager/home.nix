@@ -1,15 +1,11 @@
-{config, pkgs, spkgs, ...}: {
+{config, username, pkgs, spkgs, ...}: {
 
   home = rec {
-    username = "Iras";
+    inherit username;
     homeDirectory = "/home/${username}";
     stateVersion = "25.05";
   };
   programs.home-manager.enable = true;
-
-  programs.ncspot = {
-    enable = true;
-  };
 
   home.packages = [
     pkgs.gns3-gui
@@ -28,6 +24,11 @@
     pkgs.grimblast
     spkgs.parsec-bin
   ];
+
+  home.sessionVariables = {
+    TERMINAL = "${pkgs.wezterm}/bin/wezterm";
+    BROWSER = "${pkgs.firefox}/bin/firefox";
+  };
 
   home.file = {
     ".config/ranger/rc.conf".text = ''

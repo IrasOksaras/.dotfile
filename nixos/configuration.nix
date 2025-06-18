@@ -61,7 +61,7 @@
       type = "fcitx5";
       fcitx5 = {
         waylandFrontend = true;
-        plasma6Support = true;
+        # plasma6Support = true;
         addons = [pkgs.fcitx5-mozc];
       };
     };
@@ -137,7 +137,7 @@
 
   services = {
     displayManager.sddm.enable = true;
-    desktopManager.plasma6.enable = true;
+    # desktopManager.plasma6.enable = true;
     xserver = {
       enable = true;
       xkb.layout = "jp";
@@ -145,9 +145,6 @@
     };
   };
 
-  environment.variables = {
-    TERMINAL = "${pkgs.wezterm}/bin/wezterm";
-  };
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -296,7 +293,17 @@
   };
 
   services.flatpak.enable = true;
-  xdg.portal.enable = true;
+  xdg = {
+    # terminal-exec = {
+    #   enable = true;
+    #   settings = {
+    #     default = [
+    #       "${pkgs.wezterm}/share/applications/org.wezfurlong.wezterm.desktop"
+    #     ];
+    #   };
+    # };
+    portal.enable = true;
+  };
 
   # printerSetting
   services = {
