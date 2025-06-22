@@ -9,7 +9,7 @@ config.use_ime = true
 
 config.default_prog = { "zsh" }
 
-config.window_background_opacity = 0.25
+config.window_background_opacity = 0.6
 -- config.window_background_opacity = 0.9
 config.text_background_opacity = 1.0
 

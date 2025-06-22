@@ -25,6 +25,28 @@
     spkgs.parsec-bin
   ];
 
+  i18n = {
+    inputMethod = {
+      enable = true;
+      type = "fcitx5";
+      fcitx5 = {
+        waylandFrontend = true;
+        settings = {
+          addons = {
+            classicui.globalSection = {
+              Theme = "Tokyonight-day";
+              DarkTheme = "Tokyonight-storm";
+            };
+          };
+        };
+        addons = [
+          pkgs.fcitx5-mozc
+          pkgs.fcitx5-tokyonight
+        ];
+      };
+    };
+  };
+
   home.sessionVariables = {
     TERMINAL = "${pkgs.wezterm}/bin/wezterm";
     BROWSER = "${pkgs.firefox}/bin/firefox";
