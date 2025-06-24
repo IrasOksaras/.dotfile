@@ -73,6 +73,7 @@
         };
         modules = [
           ./home-manager/home.nix
+          ./home-manager/modules/im/im.nix
           ./home-manager/modules/wm.nix
           ./home-manager/modules/git/git.nix
           ./home-manager/modules/ncspot/ncspot.nix
