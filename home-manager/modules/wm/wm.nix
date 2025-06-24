@@ -14,7 +14,11 @@
         "HYPRCURSOR_SIZE, 24"
       ];
       "$mainMod" = "ALT_L";
-      "exec-once" = "fcitx5 -d --replace";
+      # "windowrule" = "pseudo, fcitx";
+      "exec-once" = [
+        "fcitx5-remote -r"
+        "fcitx5 -d --replace"
+      ];
       general = {
         resize_on_border = true;
         gaps_out = 5;

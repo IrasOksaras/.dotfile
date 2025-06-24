@@ -73,13 +73,13 @@
         };
         modules = [
           ./home-manager/home.nix
-          ./home-manager/modules/im/im.nix
-          ./home-manager/modules/wm.nix
           ./home-manager/modules/git/git.nix
+          ./home-manager/modules/im/im.nix
           ./home-manager/modules/ncspot/ncspot.nix
           ./home-manager/modules/neovim/neovim.nix
           ./home-manager/modules/web-browser/web-browser.nix
           ./home-manager/modules/wezterm/wezterm.nix
+          ./home-manager/modules/wm/wm.nix
           ./home-manager/modules/zsh/zsh.nix
         ];
       };
