@@ -113,6 +113,24 @@
     };
   };
 
+  services.gns3-server = {
+    enable = true;
+    ubridge.enable = true;
+    vpcs.enable = true;
+    dynamips.enable = true;
+    settings = {
+      serverConfig = {
+        host = "localhost";
+        port = 3080;
+        projects_path = "/home/${username}/GNS3/projects";
+        configs_path = "home/${username}/GNS3/configs";
+        images_path = "home/${username}/GNS3/images";
+        symbols_path = "home/${username}/GNS3/symbols";
+        appliances_path = "home${username}/GNS3/applications";
+      };
+    };
+  };
+
   # フォント設定
   fonts = {
     packages = [
@@ -184,26 +202,27 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [
-    # rnnoise-plugin
-    # wayland-protocols
-    aria2
-    busybox
-    docker-compose
-    dynamips
-    htop
-    intel-gpu-tools
-    nur.repos.ataraxiasjel.waydroid-script
-    nyx
-    qemu
-    tree
-    ubridge
-    virt-manager
-    wayland
-    wget
-    wl-clipboard-rs
-    unityhub
-    kdePackages.print-manager
+  environment.systemPackages = [
+    # pkgs.rnnoise-plugin
+    # pkgs.wayland-protocols
+    pkgs.aria2
+    pkgs.bluetuith
+    pkgs.busybox
+    pkgs.docker-compose
+    pkgs.dynamips
+    pkgs.htop
+    pkgs.intel-gpu-tools
+    pkgs.kdePackages.print-manager
+    pkgs.nur.repos.ataraxiasjel.waydroid-script
+    pkgs.nyx
+    pkgs.qemu
+    pkgs.tree
+    pkgs.ubridge
+    spkgs.unityhub
+    pkgs.virt-manager
+    pkgs.wayland
+    pkgs.wget
+    pkgs.wl-clipboard-rs
   ];
 
   users.groups.wireshark = {
