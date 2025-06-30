@@ -18,6 +18,7 @@
       "exec-once" = [
         "fcitx5-remote -r"
         "fcitx5 -d --replace"
+        "hyprpanel"
       ];
       general = {
         resize_on_border = true;
@@ -71,33 +72,20 @@
     enable = true;
   };
 
-  programs.waybar = {
-    enable = true;
-    systemd = {
-      enable = true;
-    };
-    settings = import ./waybar.nix;
-    style = ''
-        * {
-          border: none;
-          border-radius: 7.5;
-          font-family: Hackgen Console NF;
-        }
-        window#waybar {
-          background-color: rgba(34, 36, 54, 0.6);
-          color: #AAB2BF;
-        }
-        #hyprland-window {
-          background-color: rgba(25, 27, 41, 1);
-        }
-        #clock {
-          color: #AAB2BF;
-        }
-    '';
-  };
+  # programs.waybar = {
+  #   enable = true;
+  #   systemd = {
+  #     enable = true;
+  #   };
+  #   settings = import ./waybar.nix;
+  #   style = builtins.readFile ./waybar.css;
+  # };
 
   home.packages = [
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+    inputs.hyprpanel.packages.${pkgs.system}.default
+    pkgs.iniparser
+    pkgs.fftw
   ];
 
   services = {

@@ -1,0 +1,32 @@
+* {
+    border: none;
+    border-radius: 7.5px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 15px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: #AAB2BF;
+    color: #AAB2BF;
+    opacity: 0.6;
+}
+
+#custom-largespacer {
+    background-color: #FFFFFF;
+    opacity: 0.0;
+}
+
+#hyprland-window {
+    background-color: rgba(25, 27, 41, 1);
+}
+
+#clock {
+    color: #AAB2BF;
+}
+
+#battery {
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0 10px 0 0;
+}

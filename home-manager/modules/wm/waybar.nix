@@ -9,25 +9,7 @@
     output = [ "eDP-1" ];
     modules-left = [ "custom/smallspacer" "hyprland/workspaces" ];
     modules-center = [ "clock" ];
-    modules-right = [ "mediumspacer" "battery" "largespacer" ];
-
-    "custom/smallspacer" = {
-      format = " ";
-      interval = "once";
-      tooltip = false;
-    };
-
-    "custom/mediumspacer" = {
-      format = "  ";
-      interval = "once";
-      tooltip = false;
-    };
-
-    "custom/largespacer" = {
-      format = "   ";
-      interval = "once";
-      tooltip = false;
-    };
+    modules-right = [ "battery" ];
 
     "hyprland/workspaces" = {
       format = "{icon}";
@@ -44,13 +26,15 @@
     };
 
     battery = {
-      format = "{capacity}% {icon}";
-      format-icons = [ "" "" "" "" "" ];
+      format = "{icon}";
+      # format-alt = "{capacity}% {icon}";
+      format-icons = [ "" "" "" "" "" "" "" "" ];
     };
 
     clock = {
       format = "{:%H:%M}";
       format-alt = "{:%a, %d. %b  %H:%M}";
+      tooltip = false;
     };
   }
 ]

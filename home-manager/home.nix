@@ -8,6 +8,8 @@
   programs.home-manager.enable = true;
 
   home.packages = [
+    pkgs.cava
+    pkgs.gemini-cli
     pkgs.gns3-gui
     pkgs.ranger
     pkgs.screen
@@ -20,7 +22,9 @@
     pkgs.morgen
     pkgs.notion-app-enhanced
     pkgs.kicad
+    pkgs.keepassxc
     pkgs.grimblast
+    pkgs.mysql-workbench
     spkgs.parsec-bin
   ];
 
