@@ -122,11 +122,11 @@
       serverConfig = {
         host = "localhost";
         port = 3080;
-        projects_path = "/home/${username}/GNS3/projects";
-        configs_path = "home/${username}/GNS3/configs";
-        images_path = "home/${username}/GNS3/images";
-        symbols_path = "home/${username}/GNS3/symbols";
-        appliances_path = "home${username}/GNS3/applications";
+        # projects_path = "/home/${username}/GNS3/projects";
+        # configs_path = "home/${username}/GNS3/configs";
+        # images_path = "home/${username}/GNS3/images";
+        # symbols_path = "home/${username}/GNS3/symbols";
+        # appliances_path = "home${username}/GNS3/applications";
       };
     };
   };
@@ -139,6 +139,7 @@
       pkgs.twemoji-color-font
       pkgs.nerd-fonts.noto
       pkgs.hackgen-nf-font
+      pkgs.jetbrains-mono
     ];
     fontDir.enable = true;
     fontconfig = {
@@ -190,7 +191,6 @@
       "libvirtd"
       "lp"
       "networkmanager"
-      "ubridges"
       "wheel"
       "wireshark"
     ];
@@ -209,15 +209,12 @@
     pkgs.bluetuith
     pkgs.busybox
     pkgs.docker-compose
-    pkgs.dynamips
     pkgs.htop
     pkgs.intel-gpu-tools
     pkgs.kdePackages.print-manager
     pkgs.nur.repos.ataraxiasjel.waydroid-script
     pkgs.nyx
-    pkgs.qemu
     pkgs.tree
-    pkgs.ubridge
     spkgs.unityhub
     pkgs.virt-manager
     pkgs.wayland
