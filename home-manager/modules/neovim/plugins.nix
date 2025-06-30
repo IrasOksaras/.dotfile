@@ -12,6 +12,6 @@
     ./plugins/toggleterm.nix
     ./plugins/treesitter.nix
     ./plugins/ts-autotag.nix
-    ./plugins/vim-surround.nix
+    ./plugins/nvim-surround.nix
   ];
 }
