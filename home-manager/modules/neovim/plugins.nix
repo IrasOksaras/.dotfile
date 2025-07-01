@@ -1,5 +1,6 @@
 {
   imports = [
+    ./plugins/fall.nix
     ./plugins/comment.nix
     ./plugins/ddc.nix
     ./plugins/highlight-colors.nix
