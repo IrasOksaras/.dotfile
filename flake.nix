@@ -43,8 +43,7 @@
     };
   };
 
-  outputs = inputs:
-  let
+  outputs = inputs: let
     system = "x86_64-linux";
     username = "Iras";
     overlays = [ inputs.nur.overlays.default ];
@@ -84,6 +83,7 @@
           ./home-manager/modules/web-browser/web-browser.nix
           ./home-manager/modules/wezterm/wezterm.nix
           ./home-manager/modules/wm/wm.nix
+          ./home-manager/modules/yazi/yazi.nix
           ./home-manager/modules/zsh/zsh.nix
         ];
       };
