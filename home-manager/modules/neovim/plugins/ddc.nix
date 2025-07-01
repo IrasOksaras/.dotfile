@@ -72,20 +72,10 @@
       sha256 = "vW+W888Wrq0Jez+aghErDYHZFZ4xHjXjspwB9Kjlm5g=";
     };
   };
-  denops-helloworld-vim = pkgs.vimUtils.buildVimPlugin {
-    name = "denops-helloworld-vim";
-    src = pkgs.fetchFromGitHub {
-      owner = "vim-denops";
-      repo = "denops-helloworld.vim";
-      tag = "v2.0.0";
-      sha256 = "nbeSKGRNZ/XV8B6CQc5wE6rn8GPFOVDVM8vxKCSrVHM=";
-    };
-  };
 in {
   programs.nixvim = {
     extraPlugins = [
       pkgs.vimPlugins.denops-vim
-      denops-helloworld-vim
       ddc-vim
       ddc-source-lsp
       ddc-source-around
