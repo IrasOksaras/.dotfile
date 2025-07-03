@@ -35,6 +35,7 @@
         "$mainMod, T, exec, wezterm"
         "$mainMod, F, exec, pkill walker || walker"
         "$mainMod, Q, killactive"
+        ", PRINT, exec, hyprshot -m output"
       ];
       bindr = [
       ];
@@ -81,10 +82,15 @@
   #   style = builtins.readFile ./waybar.css;
   # };
 
+  programs.hyprpanel = {
+    enable = true;
+    systemd.enable = true;
+  };
+
   home.packages = [
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
-    inputs.hyprpanel.packages.${pkgs.system}.default
     pkgs.iniparser
+    pkgs.hyprshot
     pkgs.fftw
   ];
 
