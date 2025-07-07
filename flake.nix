@@ -85,6 +85,7 @@
           ./home-manager/modules/wm/wm.nix
           ./home-manager/modules/yazi/yazi.nix
           ./home-manager/modules/zsh/zsh.nix
+          ./home-manager/modules/btop/btop.nix
         ];
       };
     };
