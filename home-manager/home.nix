@@ -17,6 +17,7 @@
     pkgs.slack
     pkgs.terraform
     pkgs.ansible
+    pkgs.gparted
     pkgs.drawio
     pkgs.calcurse
     pkgs.morgen
@@ -31,6 +32,13 @@
   home.sessionVariables = {
     TERMINAL = "${pkgs.wezterm}/bin/wezterm";
     BROWSER = "${pkgs.firefox}/bin/firefox";
+  };
+
+  xdg = {
+    enable = true;
+    userDirs = {
+      enable = true;
+    };
   };
 
   home.file = {

@@ -56,19 +56,6 @@
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocales = [ "ja_JP.UTF-8/UTF-8" ];
-    # inputMethod = {
-    #   enable = true;
-    #   type = "fcitx5";
-    #   fcitx5 = {
-    #     waylandFrontend = true;
-    #     # plasma6Support = true;
-    #     addons = [
-    #       pkgs.fcitx5-mozc
-    #       pkgs.fcitx5-tokyonight
-    #       pkgs.fcitx5-gtk
-    #     ];
-    #   };
-    # };
   };
 
   services.xremap = {
@@ -92,18 +79,22 @@
     };
   };
 
-  # 指紋認証
-  systemd.services.fprintd = {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig.type = "simple";
-  };
-  services.fprintd = {
+  security.polkit = {
     enable = true;
-    # tod = {
-    #   enable = true;
-    #   driver = pkgs.libfprint-2-tod1-goodix;
-    # };
   };
+
+  # 指紋認証
+  # systemd.services.fprintd = {
+  #   wantedBy = [ "multi-user.target" ];
+  #   serviceConfig.type = "simple";
+  # };
+  # services.fprintd = {
+  #   enable = true;
+  #   # tod = {
+  #   #   enable = true;
+  #   #   driver = pkgs.libfprint-2-tod1-goodix;
+  #   # };
+  # };
   
   services.tor = {
     enable = true;
@@ -262,7 +253,10 @@
       };
     };
     libvirtd.enable = true;
-    waydroid.enable = true;
+    waydroid = {
+      enable = true;
+      package = spkgs.waydroid; 
+    };
   };
   users.extraGroups.vboxusers.members = ["${username}"];
 
