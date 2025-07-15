@@ -8,6 +8,10 @@
     enable = true;
     xwayland.enable = true;
     package = null; portalPackage = null;
+    plugins = [
+      inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
+      inputs.hyprspace.packages.${pkgs.system}.Hyprspace
+    ];
     settings = {
       "env" = [
         "HYPRCURSOR_THEME, rose-pine-hyprcursor"
@@ -19,7 +23,14 @@
         "fcitx5-remote -r"
         "fcitx5 -d --replace"
         "hyprpanel"
+        "systemctl --user start hyprpolkitagent"
       ];
+      plugin = {
+        overview = {
+          "autoDrag" = true;
+          "reverseSwipe" = true;
+        };
+      };
       general = {
         resize_on_border = true;
         gaps_out = 5;
@@ -59,6 +70,7 @@
       };
       monitor = [
         "eDP-1, 1920x1200@60, auto, 1.1"
+        "DP-2, 1920x1280@60, auto, 1.5"
       ];
       decoration = {
         rounding = 10;
@@ -90,6 +102,7 @@
   home.packages = [
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
     pkgs.iniparser
+    pkgs.hyprpolkitagent
     pkgs.hyprshot
     pkgs.fftw
   ];
@@ -105,8 +118,12 @@
           "/home/${username}/Pictures/wallpaper/b-253.jpg"
           "/home/${username}/Pictures/wallpaper/b-285.jpg"
           "/home/${username}/Pictures/wallpaper/b-743.jpg"
+          "/home/${username}/Pictures/wallpaper/WhiteGlint.jpg"
         ];
-        wallpaper = "eDP-1, /home/${username}/Pictures/wallpaper/01.jpg";
+        wallpaper = [
+          "eDP-1, /home/${username}/Pictures/wallpaper/WhiteGlint.jpg"
+          "DP-2, /home/${username}/Pictures/wallpaper/WhiteGlint.jpg"
+        ];
       };
     };
   };
