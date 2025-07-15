@@ -1,7 +1,7 @@
 {
   imports = [
-    ./plugins/fall.nix
     ./plugins/comment.nix
+    ./plugins/alpha-nvim.nix
     ./plugins/ddc.nix
     ./plugins/highlight-colors.nix
     ./plugins/indent-blankline.nix
