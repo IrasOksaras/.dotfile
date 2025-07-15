@@ -203,7 +203,7 @@
     pkgs.htop
     pkgs.intel-gpu-tools
     pkgs.kdePackages.print-manager
-    pkgs.nur.repos.ataraxiasjel.waydroid-script
+    # pkgs.nur.repos.ataraxiasjel.waydroid-script
     pkgs.nyx
     pkgs.tree
     spkgs.unityhub
