@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{config, pkgs, ...}: {
+
   programs.nixvim.plugins = {
     alpha = {
       enable = true;
@@ -12,11 +13,9 @@
             redraw = true;
           };
           type = "terminal";
-          command = ''
-echo -e "███╗   ██╗██╗██╗  ██╗██╗   ██╗██╗███╗   ███╗\n████╗  ██║██║╚██╗██╔╝██║   ██║██║████╗ ████║\n██╔██╗ ██║██║ ╚███╔╝ ██║   ██║██║██╔████╔██║\n██║╚██╗██║██║ ██╔██╗ ╚██╗ ██╔╝██║██║╚██╔╝██║\n██║ ╚████║██║██╔╝ ██╗ ╚████╔╝ ██║██║ ╚═╝ ██║\n╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝" | tte beams
-          '';
-          width = 44;
-          height = 6;
+          command = "${config.xdg.dataHome}/nvim/scripts/startup.sh";
+          width = 54;
+          height = 11;
         }
         {
           type = "padding";
@@ -37,7 +36,7 @@ echo -e "███╗   ██╗██╗██╗  ██╗██╗   ██
                 shortcut = "n";
               };
               type = "button";
-              val = "  New file";
+              val = " New file";
             }
             {
               on_press = {
@@ -73,4 +72,11 @@ echo -e "███╗   ██╗██╗██╗  ██╗██╗   ██
     pkgs.figlet
     pkgs.terminaltexteffects
   ];
+
+  xdg.dataFile = {
+    "nvim/scripts/startup.sh" = {
+      source = ./scripts/startup.sh;
+      executable = true;
+    };
+  };
 }
