@@ -14,14 +14,12 @@
     pkgs.ranger
     pkgs.screen
     pkgs.spotify
-    pkgs.slack
     pkgs.terraform
     pkgs.ansible
     pkgs.gparted
     pkgs.drawio
     pkgs.calcurse
     pkgs.morgen
-    pkgs.notion-app-enhanced
     pkgs.kicad
     pkgs.keepassxc
     pkgs.grimblast
