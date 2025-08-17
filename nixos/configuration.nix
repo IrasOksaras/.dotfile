@@ -36,7 +36,27 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager = {
     enable = true;  # Easiest to use and most distros use this by default.
-    wifi.powersave = true;
+    wifi = {
+      # backend = "iwd";
+      powersave = true;
+    };
+  };
+
+  # networking.wireless.iwd = {
+  #   enable = true;
+  #   settings = {
+  #     Network = {
+  #       EnableIPv6 = true;
+  #     };
+  #     Settings = {
+  #       AutoConnect = true;
+  #     };
+  #   };
+  # };
+
+  services.usbmuxd = {
+    enable = true;
+    package = pkgs.usbmuxd2;
   };
 
   # Set your time zone.
@@ -183,6 +203,7 @@
       "lp"
       "networkmanager"
       "wheel"
+      "audio"
       "wireshark"
     ];
     packages = [
@@ -196,6 +217,9 @@
   environment.systemPackages = [
     # pkgs.rnnoise-plugin
     # pkgs.wayland-protocols
+    pkgs.libimobiledevice
+    pkgs.ifuse
+    pkgs.vbam
     pkgs.aria2
     pkgs.bluetuith
     pkgs.busybox
@@ -203,7 +227,7 @@
     pkgs.htop
     pkgs.intel-gpu-tools
     pkgs.kdePackages.print-manager
-    # pkgs.nur.repos.ataraxiasjel.waydroid-script
+    pkgs.nur.repos.ataraxiasjel.waydroid-script
     pkgs.nyx
     pkgs.tree
     spkgs.unityhub
@@ -229,7 +253,7 @@
 
   services.llama-cpp = {
     enable = true;
-    model = "/models/qwen2.5-coder-3b-instruct-q4_k_m.gguf";
+    model = "/models/gemma-3-270m-it-F16.gguf";
     extraFlags = [
       "--n-gpu-layers"
       "99"
@@ -255,7 +279,7 @@
     libvirtd.enable = true;
     waydroid = {
       enable = true;
-      package = spkgs.waydroid; 
+      package = pkgs.waydroid; 
     };
   };
   users.extraGroups.vboxusers.members = ["${username}"];
@@ -415,7 +439,7 @@
     tlp = {
       enable = true;
       settings = {
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_AC = "balanced";
         CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
         PLATFORM_PROFILE_ON_AC = "balanced";
         PLATFORM_PROFILE_ON_BAT = "low-power";

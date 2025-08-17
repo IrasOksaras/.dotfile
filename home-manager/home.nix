@@ -8,7 +8,8 @@
   programs.home-manager.enable = true;
 
   home.packages = [
-    pkgs.cava
+    pkgs.pavucontrol
+    pkgs.impala
     pkgs.gemini-cli
     pkgs.gns3-gui
     pkgs.ranger
@@ -35,6 +36,15 @@
   xdg = {
     enable = true;
     userDirs = {
+      enable = true;
+    };
+  };
+
+  programs = {
+    cava = {
+      enable = true;
+    };
+    cavalier = {
       enable = true;
     };
   };
