@@ -98,7 +98,7 @@
           ./home-manager/modules/zsh/zsh.nix
           ./home-manager/modules/btop/btop.nix
           ./home-manager/modules/prismlauncher/prismlauncher.nix
-          ./home-manager/modules/opencode/opencode.nix
+          # ./home-manager/modules/opencode/opencode.nix
         ];
       };
     };

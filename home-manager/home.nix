@@ -25,6 +25,7 @@
     pkgs.keepassxc
     pkgs.grimblast
     pkgs.mysql-workbench
+    pkgs.slack
     spkgs.parsec-bin
   ];
 
