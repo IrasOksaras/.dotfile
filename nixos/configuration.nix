@@ -8,11 +8,6 @@
     ./hardware-configuration.nix
     inputs.xremap.nixosModules.default
   ];
-  # ++ (with inputs.nixos-hardware.nixosModules; [
-  #   common-cpu-intel-meteor-lake
-  #   common-gpu-intel-meteor-lake
-  #   common-ssd
-  # ]);
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
