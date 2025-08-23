@@ -69,8 +69,8 @@
         workspace_swipe_fingers = 4;
       };
       monitor = [
-        "eDP-1, 1920x1200@60, auto, 1.1"
-        "DP-2, 1920x1280@60, auto, 1.5"
+        "eDP-1, 1920x1200@60, 0x0, 1.1"
+        "HDMI-A-1, 3840x2160@60, -436x-1440, 1.5"
       ];
       decoration = {
         rounding = 10;
