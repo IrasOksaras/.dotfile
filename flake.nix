@@ -8,9 +8,10 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+    };
 
     wezterm = {
       url = "github:wezterm/wezterm?dir=nix";
@@ -44,7 +45,7 @@
       inputs.hyprlang.follows = "hyprland/hyprlang";
     };
     walker = {
-      url = "github:abenz1267/walker";
+      url = "github:abenz1267/walker/0.13.26";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
@@ -58,20 +59,20 @@
     system = "x86_64-linux";
     username = "Iras";
     overlays = [ inputs.nur.overlays.default ];
-    pkgs = import inputs.nixpkgs-unstable { 
+    pkgs = import inputs.nixpkgs { 
       config.allowUnfree = true;
       inherit system overlays;
     };
-    spkgs = import inputs.nixpkgs { 
-      config.allowUnfree = true;
-      inherit system overlays;
-    };
+    # upkgs = import inputs.nixpkgs-unstable { 
+    #   config.allowUnfree = true;
+    #   inherit system overlays;
+    # };
   in {
     nixosConfigurations = {
       myNixOS = inputs.nixpkgs-unstable.lib.nixosSystem {
         inherit system pkgs;
         specialArgs = {
-          inherit inputs username spkgs;
+          inherit inputs username;
         };
         modules = [
           ./nixos/configuration.nix
@@ -83,7 +84,7 @@
       myHome = inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
         extraSpecialArgs = {
-          inherit inputs username spkgs;
+          inherit inputs username;
         };
         modules = [
           ./home-manager/home.nix

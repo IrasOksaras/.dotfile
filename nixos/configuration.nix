@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-{ inputs, config, lib, pkgs, spkgs, username, ... }:
+{ inputs, config, lib, pkgs, username, ... }:
 
 {
   imports = [ 
@@ -204,7 +204,6 @@
     packages = [
       pkgs.ciscoPacketTracer8
       # pkgs.discord
-      pkgs.remmina
       # pkgs.zoom-us
     ];
   };
@@ -225,7 +224,7 @@
     pkgs.nur.repos.ataraxiasjel.waydroid-script
     pkgs.nyx
     pkgs.tree
-    spkgs.unityhub
+    pkgs.unityhub
     pkgs.virt-manager
     pkgs.wayland
     pkgs.wget
@@ -254,7 +253,7 @@
       "99"
     ];
     port = 8081;
-    package = spkgs.llama-cpp.override { vulkanSupport = true; };
+    package = pkgs.llama-cpp.override { vulkanSupport = true; };
   };
 
   virtualisation = {
@@ -444,7 +443,7 @@
     };
   };
 
-  system.stateVersion = "25.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 
   nix = {
     settings = {

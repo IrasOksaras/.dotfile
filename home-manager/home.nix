@@ -1,4 +1,4 @@
-{config, username, pkgs, spkgs, ...}: {
+{config, username, pkgs,  ...}: {
 
   home = rec {
     inherit username;
@@ -26,7 +26,7 @@
     pkgs.grimblast
     pkgs.mysql-workbench
     pkgs.slack
-    spkgs.parsec-bin
+    pkgs.parsec-bin
   ];
 
   home.sessionVariables = {
