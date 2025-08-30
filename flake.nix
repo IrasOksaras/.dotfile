@@ -8,6 +8,7 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
@@ -69,7 +70,7 @@
     # };
   in {
     nixosConfigurations = {
-      myNixOS = inputs.nixpkgs-unstable.lib.nixosSystem {
+      myNixOS = inputs.nixpkgs.lib.nixosSystem {
         inherit system pkgs;
         specialArgs = {
           inherit inputs username;
