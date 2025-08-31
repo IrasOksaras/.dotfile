@@ -84,9 +84,9 @@
   programs.walker = {
     enable = true;
     runAsService = true;
-    config = {
-
-    };
+    # config = {
+    #
+    # };
   };
 
   # programs.waybar = {

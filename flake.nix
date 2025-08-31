@@ -23,7 +23,7 @@
     
     # hyprland
     hyprland = {
-      url = "github:hyprwm/Hyprland";
+      url = "github:hyprwm/Hyprland/v0.49.0";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     hyprpanel = {
@@ -44,7 +44,7 @@
       inputs.hyprlang.follows = "hyprland/hyprlang";
     };
     walker = {
-      url = "github:abenz1267/walker";
+      url = "github:abenz1267/walker/1.0.0";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
