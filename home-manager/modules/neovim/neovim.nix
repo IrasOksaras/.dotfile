@@ -1,7 +1,7 @@
 {inputs, pkgs, ...}: {
 
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
     ./options.nix
     ./keymap.nix
     ./colors.nix
@@ -31,7 +31,7 @@
     enable = true;
     defaultEditor = true;
     viAlias = true;
-    vimAlias = true;
+    vimAlias = false;
     withNodeJs = false;
     withPerl = false;
     withPython3 = false;

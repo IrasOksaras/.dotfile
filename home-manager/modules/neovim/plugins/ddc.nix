@@ -1,4 +1,4 @@
-{pkgs, ...}: let
+{pkgs, spkgs, ...}: let
 
   ddc-vim = pkgs.vimUtils.buildVimPlugin {
     name = "ddc-vim";
@@ -69,13 +69,13 @@
       owner = "Shougo";
       repo = "ddc-ui-native";
       rev = "master";
-      sha256 = "vW+W888Wrq0Jez+aghErDYHZFZ4xHjXjspwB9Kjlm5g=";
+      sha256 = "fWJDl/MdW3Ce99sqs60Cp6OghnGfsQFmIkOTDkAT9yw=";
     };
   };
 in {
   programs.nixvim = {
     extraPlugins = [
-      pkgs.vimPlugins.denops-vim
+      spkgs.vimPlugins.denops-vim
       ddc-vim
       ddc-source-lsp
       ddc-source-around

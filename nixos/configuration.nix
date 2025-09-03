@@ -121,6 +121,7 @@
 
   services.gns3-server = {
     enable = true;
+    package = spkgs.gns3-server;
     ubridge.enable = true;
     vpcs.enable = true;
     dynamips.enable = true;

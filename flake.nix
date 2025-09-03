@@ -25,6 +25,11 @@
     hyprland = {
       url = "github:hyprwm/Hyprland/v0.49.0";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.aquamarine.follows = "aquamarine";
+    };
+    aquamarine = {
+      url = "github:hyprwm/aquamarine/v0.9.3";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     hyprpanel = {
       url = "github:Jas-SinghFSU/HyprPanel";
@@ -35,7 +40,7 @@
       inputs.hyprland.follows = "hyprland";
     };
     hyprspace = {
-      url = "github:KZDKM/Hyprspace";
+      url = "github:KZDKM/Hyprspace/847a770436e1ecebdbe5ed006a93db7666937ff2";
       inputs.hyprland.follows = "hyprland";
     };
     rose-pine-hyprcursor = {
@@ -44,7 +49,7 @@
       inputs.hyprlang.follows = "hyprland/hyprlang";
     };
     walker = {
-      url = "github:abenz1267/walker/1.0.0";
+      url = "github:abenz1267/walker/0.13.26";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 

@@ -3,7 +3,7 @@
   home = rec {
     inherit username;
     homeDirectory = "/home/${username}";
-    stateVersion = "25.05";
+    stateVersion = "25.11";
   };
   programs.home-manager.enable = true;
 
@@ -15,13 +15,10 @@
     pkgs.ranger
     pkgs.screen
     pkgs.spotify
-    pkgs.terraform
-    pkgs.ansible
     pkgs.gparted
     pkgs.drawio
     pkgs.calcurse
-    pkgs.morgen
-    pkgs.kicad
+    spkgs.kicad
     pkgs.keepassxc
     pkgs.grimblast
     pkgs.mysql-workbench
