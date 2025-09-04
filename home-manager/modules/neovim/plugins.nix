@@ -1,5 +1,6 @@
 {
   imports = [
+    ./plugins/nui.nix
     ./plugins/remote-nvim.nix
     ./plugins/comment.nix
     ./plugins/alpha-nvim.nix
