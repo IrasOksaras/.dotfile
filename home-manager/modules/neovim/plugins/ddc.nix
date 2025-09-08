@@ -5,8 +5,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "Shougo";
       repo = "ddc.vim";
-      tag = "v9.5.0";
-      sha256 = "V0XVfP9Yy96epBpHjC4COCHNcrWatXM72I8pkwYjOWA=";
+      tag = "v10.0.0";
+      sha256 = "gxXtrSu6056BfuegSeNeaiACJxqLqVZ9uSnjl9t+vD0=";
     };
   };
   ddc-source-lsp = pkgs.vimUtils.buildVimPlugin {
@@ -72,10 +72,28 @@
       sha256 = "fWJDl/MdW3Ce99sqs60Cp6OghnGfsQFmIkOTDkAT9yw=";
     };
   };
+  ddc-ui-pum = pkgs.vimUtils.buildVimPlugin {
+    name = "ddc-ui-pum";
+    src = pkgs.fetchFromGitHub { 
+      owner = "Shougo";
+      repo = "ddc-ui-pum";
+      rev = "master";
+      sha256 = "kQ1fK65V0NtObqBy/FhcfACUGeI5Pk4t3Kw0BPpxChw=";
+    };
+  };
+  pum-vim = pkgs.vimUtils.buildVimPlugin {
+    name = "pum-vim";
+    src = pkgs.fetchFromGitHub {
+      owner = "Shougo";
+      repo = "pum.vim";
+      tag = "2.0";
+      sha256 = "bovYwcTjWXkvscc2p55Cb1pDEOHJPliYz1hsn0fhhiw=";
+    };
+  };
 in {
   programs.nixvim = {
     extraPlugins = [
-      spkgs.vimPlugins.denops-vim
+      pkgs.vimPlugins.denops-vim
       ddc-vim
       ddc-source-lsp
       ddc-source-around
@@ -84,59 +102,80 @@ in {
       ddc-filter-matcher_head
       ddc-filter-sorter_rank
       ddc-ui-native
+      ddc-ui-pum
+      pum-vim
     ];
 
     extraConfigLua = ''
-      -- vim.fn["ddc#custom#patch_global"]('ui', 'pum'j
-      -- vim.fn["ddc#custom#patch_global"]('sources', {'lsp', 'around', 'file'})
-      -- vim.fn["ddc#custom#patch_global"]('sourceOptions', {
-      --   _ = {
-      --     matchers = {'matcher_head'},
-      --     sorters = {'sorter_rank'},
-      --     converters = {'converter_remove_overlap'}
-      --   },
-      --   around = {
-      --     mark = {'around'}
-      --   },
-      -- })
-      --
-      -- vim.fn["ddc#enable"]()
+      vim.fn["ddc#custom#patch_global"]('ui', 'pum')
+      vim.fn["ddc#custom#patch_global"]('sources', {'lsp', 'around', 'file'})
+      vim.fn["ddc#custom#patch_global"]('sourceOptions', {
+        _ = {
+          matchers = {'matcher_head'},
+          sorters = {'sorter_rank'},
+          converters = {'converter_remove_overlap'}
+        },
+        around = {
+          mark = 'around'
+        },
+        lsp = {
+          mark = 'lsp',
+          matchers = {'matcher_head'},
+          forceCompletionPattern = {'\\.|:|->|\"\\w+/*'}
+        },
+        file = {
+          mark = 'file',
+          isVolatile = 'v:true',
+          forceCompletionPattern = {'\\S/\\S*'}
+        }
+      })
+
+      vim.fn["ddc#enable"]()
     '';
 
     extraConfigVim = ''
-      call ddc#custom#patch_global('sources', [
-        \ 'around',
-        \ 'lsp',
-        \ 'file'
-        \ ])
-
-      call ddc#custom#patch_global('sourceOptions', {
-        \ '_': {
-        \   'matchers': ['matcher_head'],
-        \   'sorters': ['sorter_rank'],
-        \   'converters': ['converter_remove_overlap'],
-        \ },
-        \ 'around': {'mark': 'around'},
-        \ 'lsp': {
-        \   'mark': 'lsp',
-        \   'matchers': ['matcher_head'],
-        \   'forceCompletionPattern': '\.|:|->|"\w+/*'
-        \ },
-        \ 'file': {
-        \   'mark': 'file',
-        \   'isVolatile': v:true,
-        \   'forceCompletionPattern': '\S/\S*'
-        \ }})
-
-      call ddc#custom#patch_global('ui', 'native')
-
-      call ddc#enable()
+      " call ddc#custom#patch_global('sources', [
+      "   \ 'around',
+      "   \ 'lsp',
+      "   \ 'file'
+      "   \ ])
+      "
+      " call ddc#custom#patch_global('sourceOptions', {
+      "   \ '_': {
+      "   \   'matchers': ['matcher_head'],
+      "   \   'sorters': ['sorter_rank'],
+      "   \   'converters': ['converter_remove_overlap'],
+      "   \ },
+      "   \ 'around': {'mark': 'around'},
+      "   \ 'lsp': {
+      "   \   'mark': 'lsp',
+      "   \   'matchers': ['matcher_head'],
+      "   \   'forceCompletionPattern': '\.|:|->|"\w+/*'
+      "   \ },
+      "   \ 'file': {
+      "   \   'mark': 'file',
+      "   \   'isVolatile': v:true,
+      "   \   'forceCompletionPattern': '\S/\S*'
+      "   \ }})
+      "
+      " call ddc#custom#patch_global('ui', 'pum')
+      "
+      " call ddc#enable()
+      " inoremap <silent><expr> <TAB>
+      "   \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+      "   \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+      "   \ '<TAB>' : ddc#map#manual_complete()
+      inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+      inoremap <C-n>   <Cmd>call pum#map#select_relative(+1)<CR>
+      inoremap <C-p>   <Cmd>call pum#map#select_relative(-1)<CR>
+      inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
+      inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
     '';
 
     keymaps = [
       {
         action = ''
-         pumvisible() ? '<C-n>' : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ? '<TAB>' : ddc#map#manual_complete()
+          function() return vim.fn['pum#visible']() and '<Cmd>call pum#map#insert_relative(+1)<CR>' or (vim.fn.col('.') <= 1 or vim.fn.getline('.'):sub(vim.fn.col('.') - 1, vim.fn.col('.') - 1):match('%s')) and '<TAB>' or vim.fn['ddc#map#manual_complete']() end
         '';
         key = "<TAB>";
         mode = [ "i" ];
@@ -156,15 +195,15 @@ in {
           expr = true;
         };
       }
-    #   {
-    #     action = "<cmd>call pum#confirm()<CR>";
-    #     key = "C-y";
-    #     mode = [ "i" ];
-    #     options = {
-    #       noremap = true;
-    #       silent = true;
-    #     };
-    #   }
+      {
+        action = "<cmd>call pum#confirm()<CR>";
+        key = "C-y";
+        mode = [ "i" ];
+        options = {
+          noremap = true;
+          silent = true;
+        };
+      }
     ];
   };
 }
