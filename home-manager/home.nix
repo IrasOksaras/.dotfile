@@ -8,6 +8,8 @@
   programs.home-manager.enable = true;
 
   home.packages = [
+    pkgs.realvnc-vnc-viewer
+    pkgs.remmina
     pkgs.pavucontrol
     pkgs.impala
     pkgs.gemini-cli
