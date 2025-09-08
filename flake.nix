@@ -20,6 +20,10 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    nixcats = {
+      url = "github:BirdeeHub/nixCats-nvim";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     
     # hyprland
     hyprland = {
@@ -30,6 +34,11 @@
     aquamarine = {
       url = "github:hyprwm/aquamarine/v0.9.3";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+    hypridle = {
+      url = "github:hyprwm/hypridle/v0.1.7";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.hyprlang.follows = "hyprland/hyprlang";
     };
     hyprpanel = {
       url = "github:Jas-SinghFSU/HyprPanel";
@@ -49,6 +58,7 @@
       inputs.hyprlang.follows = "hyprland/hyprlang";
     };
     walker = {
+      # url = "github:abenz1267/walker/1.0.0";
       url = "github:abenz1267/walker/0.13.26";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
