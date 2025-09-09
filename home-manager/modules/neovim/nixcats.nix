@@ -5,6 +5,8 @@ in {
     inputs.nixCats.homeModule
   ];
   config = {
-    enable = true;
+    nixCats = {
+      enable = true;
+    };
   };
 }

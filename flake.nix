@@ -20,9 +20,8 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    nixcats = {
+    nixCats = {
       url = "github:BirdeeHub/nixCats-nvim";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     
     # hyprland
@@ -113,6 +112,7 @@
           ./home-manager/modules/zsh/zsh.nix
           ./home-manager/modules/btop/btop.nix
           ./home-manager/modules/prismlauncher/prismlauncher.nix
+          ./home-manager/modules/neovim/nixcats.nix
           # ./home-manager/modules/opencode/opencode.nix
         ];
       };

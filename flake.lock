@@ -1204,7 +1204,7 @@
         "type": "github"
       }
     },
-    "nixcats": {
+    "nixCats": {
       "locked": {
         "lastModified": 1756502529,
         "narHash": "sha256-IPhN1a/DecHCJKugq51TnPqcMkwHU7qrQXagR2k1KwA=",
@@ -1499,7 +1499,7 @@
         "hyprpanel": "hyprpanel",
         "hyprspace": "hyprspace",
         "hyprsplit": "hyprsplit",
-        "nixcats": "nixcats",
+        "nixCats": "nixCats",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
