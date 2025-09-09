@@ -32,22 +32,22 @@
   networking.networkmanager = {
     enable = true;  # Easiest to use and most distros use this by default.
     wifi = {
-      # backend = "iwd";
+      backend = "iwd";
       powersave = true;
     };
   };
 
-  # networking.wireless.iwd = {
-  #   enable = true;
-  #   settings = {
-  #     Network = {
-  #       EnableIPv6 = true;
-  #     };
-  #     Settings = {
-  #       AutoConnect = true;
-  #     };
-  #   };
-  # };
+  networking.wireless.iwd = {
+    enable = true;
+    settings = {
+      Network = {
+        EnableIPv6 = true;
+      };
+      Settings = {
+        AutoConnect = true;
+      };
+    };
+  };
 
   services.usbmuxd = {
     enable = true;
