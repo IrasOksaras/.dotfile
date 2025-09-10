@@ -29,25 +29,36 @@
   networking.hostName = "ThinkBook-E14-G7"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
   networking.networkmanager = {
     enable = true;  # Easiest to use and most distros use this by default.
     wifi = {
-      backend = "iwd";
+      # backend = "iwd";
       powersave = true;
     };
   };
 
-  networking.wireless.iwd = {
-    enable = true;
-    settings = {
-      Network = {
-        EnableIPv6 = true;
-      };
-      Settings = {
-        AutoConnect = true;
-      };
-    };
-  };
+  # services.connman = {
+  #   enable = true;
+  #   wifi = {
+  #     backend = "iwd";
+  #   };
+  # };
+
+  # networking.wireless.iwd = {
+  #   enable = true;
+  #   settings = {
+  #     Network = {
+  #       EnableIPv6 = true;
+  #     };
+  #     Scan = {
+  #       DisablePeriodicScan = true;
+  #     };
+  #     Settings = {
+  #       # AutoConnect = true;
+  #     };
+  #   };
+  # };
 
   services.usbmuxd = {
     enable = true;
@@ -171,7 +182,7 @@
 
   services = {
     displayManager.sddm.enable = true;
-    # desktopManager.plasma6.enable = true;
+    desktopManager.plasma6.enable = true;
     xserver = {
       enable = true;
       xkb.layout = "jp";
@@ -230,7 +241,6 @@
     pkgs.nur.repos.ataraxiasjel.waydroid-script
     pkgs.nyx
     pkgs.tree
-    spkgs.unityhub
     pkgs.virt-manager
     pkgs.wayland
     pkgs.wget
