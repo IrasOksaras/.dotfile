@@ -8,6 +8,8 @@
   programs.home-manager.enable = true;
 
   home.packages = [
+    pkgs.plasticity
+    pkgs.blender
     pkgs.realvnc-vnc-viewer
     pkgs.remmina
     pkgs.pavucontrol
