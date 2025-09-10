@@ -9,11 +9,10 @@ config.use_ime = true
 
 config.default_prog = { "zsh" }
 
-config.window_background_opacity = 0.6
--- config.window_background_opacity = 0.9
+config.window_background_opacity = 0.95
 config.text_background_opacity = 1.0
 
-config.font_size = 12.7
+config.font_size = 13.0
 config.font = wezterm.font("HackGen Console NF", {weight="Regular", stretch="Normal"})
 
 config.color_scheme = "Tokyo Night Moon"
