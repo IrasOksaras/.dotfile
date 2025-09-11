@@ -58,8 +58,8 @@
       inputs.hyprlang.follows = "hyprland/hyprlang";
     };
     walker = {
-      # url = "github:abenz1267/walker/1.0.0";
-      url = "github:abenz1267/walker/0.13.26";
+      url = "github:abenz1267/walker/1.0.0";
+      # url = "github:abenz1267/walker/0.13.26";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
