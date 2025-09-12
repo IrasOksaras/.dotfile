@@ -162,6 +162,7 @@
       pkgs.nerd-fonts.noto
       pkgs.hackgen-nf-font
       pkgs.jetbrains-mono
+      pkgs.minecraftia
     ];
     fontDir.enable = true;
     fontconfig = {
@@ -182,7 +183,7 @@
 
   services = {
     displayManager.sddm.enable = true;
-    desktopManager.plasma6.enable = true;
+    # desktopManager.plasma6.enable = true;
     xserver = {
       enable = true;
       xkb.layout = "jp";
