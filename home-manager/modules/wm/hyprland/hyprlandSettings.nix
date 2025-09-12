@@ -3,7 +3,8 @@
     "HYPRCURSOR_THEME, rose-pine-hyprcursor"
     "HYPRCURSOR_SIZE, 24"
   ];
-  "$mainMod" = "ALT_L";
+  # "$mainMod" = "ALT_L";
+  "$mainMod" = "SUPER_L";
   # "windowrule" = "pseudo, fcitx";
   "exec-once" = [
     "fcitx5-remote -r"
