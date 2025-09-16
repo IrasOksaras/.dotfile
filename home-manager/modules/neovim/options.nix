@@ -12,6 +12,7 @@
       number = true;
       cursorline = true;
       guicursor = "n:blinkon0";
+      mouse = "";
       list = true;
       listchars = "tab:▸\\ ,eol:↲,space:･";
       expandtab = true;
