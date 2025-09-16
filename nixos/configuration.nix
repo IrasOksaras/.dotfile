@@ -65,6 +65,10 @@
     package = pkgs.usbmuxd2;
   };
 
+  services.udisks2 = {
+    enable = true;
+  };
+
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
 
