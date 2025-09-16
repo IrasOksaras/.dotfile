@@ -68,6 +68,7 @@
         wallpaper = [
           "eDP-1, /home/${username}/Pictures/wallpaper/WhiteGlint.jpg"
           "DP-2, /home/${username}/Pictures/wallpaper/WhiteGlint.jpg"
+          "HDMI-A-1, /home/${username}/Pictures/wallpaper/WhiteGlint.jpg"
         ];
       };
     };
