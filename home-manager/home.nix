@@ -8,7 +8,7 @@
   programs.home-manager.enable = true;
 
   home.packages = [
-    pkgs.plasticity
+    pkgs.freecad-wayland
     pkgs.blender
     pkgs.realvnc-vnc-viewer
     pkgs.remmina
