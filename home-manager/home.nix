@@ -8,26 +8,27 @@
   programs.home-manager.enable = true;
 
   home.packages = [
-    pkgs.terraform
-    pkgs.freecad-wayland
     pkgs.blender
-    pkgs.realvnc-vnc-viewer
-    pkgs.remmina
-    pkgs.pavucontrol
-    pkgs.impala
+    pkgs.calcurse
+    pkgs.drawio
+    pkgs.freecad-wayland
     pkgs.gemini-cli
     pkgs.gns3-gui
-    pkgs.ranger
-    pkgs.screen
-    pkgs.spotify
     pkgs.gparted
-    pkgs.drawio
-    pkgs.calcurse
-    spkgs.kicad
-    pkgs.keepassxc
     pkgs.grimblast
+    pkgs.impala
+    pkgs.keepassxc
     pkgs.mysql-workbench
+    pkgs.obsidian
+    pkgs.pavucontrol
+    pkgs.ranger
+    pkgs.realvnc-vnc-viewer
+    pkgs.remmina
+    pkgs.screen
     pkgs.slack
+    pkgs.spotify
+    pkgs.terraform
+    spkgs.kicad
     spkgs.parsec-bin
   ];
 
