@@ -16,12 +16,16 @@
                 value = "";
               }
               {
-                match = "Password:";
+                match = "password:";
                 type = "secret";
                 value_type = "static";
                 value = "";
               }
             ];
+          };
+          offline_mode = {
+            enabled = true;
+            no_github = true;
           };
         };
       };
