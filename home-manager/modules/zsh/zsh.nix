@@ -56,6 +56,7 @@
       shellAliases = {
         lg = "lazygit";
         kc = "kubectl";
+        tf = "terraform";
       };
 
       initContent = ''
