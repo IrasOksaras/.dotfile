@@ -8,6 +8,7 @@
   programs.home-manager.enable = true;
 
   home.packages = [
+    pkgs.terraform
     pkgs.freecad-wayland
     pkgs.blender
     pkgs.realvnc-vnc-viewer
