@@ -1,20 +1,21 @@
 {
   imports = [
-    ./plugins/noice.nix
-    ./plugins/remote-nvim.nix
-    ./plugins/comment.nix
     ./plugins/alpha-nvim.nix
+    ./plugins/comment.nix
     ./plugins/ddc.nix
     ./plugins/highlight-colors.nix
     ./plugins/indent-blankline.nix
     ./plugins/lazygit.nix
     ./plugins/lsp.nix
     ./plugins/lualine.nix
+    ./plugins/noice.nix
     ./plugins/nvim-autopairs.nix
+    ./plugins/nvim-surround.nix
+    ./plugins/remote-nvim.nix
+    ./plugins/render-markdown.nix
     ./plugins/telescope.nix
     ./plugins/toggleterm.nix
     ./plugins/treesitter.nix
     ./plugins/ts-autotag.nix
-    ./plugins/nvim-surround.nix
   ];
 }
