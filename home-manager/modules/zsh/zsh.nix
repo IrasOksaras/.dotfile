@@ -55,6 +55,7 @@
 
       shellAliases = {
         lg = "lazygit";
+        kc = "kubectl";
       };
 
       initContent = ''
