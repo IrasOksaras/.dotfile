@@ -19,7 +19,6 @@
     pkgs.impala
     pkgs.keepassxc
     pkgs.mysql-workbench
-    pkgs.obsidian
     pkgs.pavucontrol
     pkgs.ranger
     pkgs.realvnc-vnc-viewer
@@ -30,6 +29,7 @@
     pkgs.terraform
     spkgs.kicad
     spkgs.parsec-bin
+    pkgs.cz-cli
   ];
 
   home.sessionVariables = {
@@ -49,6 +49,12 @@
       enable = true;
     };
     cavalier = {
+      enable = true;
+    };
+  };
+
+  programs = {
+    obsidian = {
       enable = true;
     };
   };
