@@ -48,6 +48,7 @@
   programs.hyprpanel = {
     enable = true;
     systemd.enable = true;
+    settings = import ./hyprpanel.nix;
   };
 
   home.packages = [
