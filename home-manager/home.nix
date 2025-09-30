@@ -8,6 +8,7 @@
   programs.home-manager.enable = true;
 
   home.packages = [
+    pkgs.zathura
     pkgs.blender
     pkgs.calcurse
     pkgs.drawio
