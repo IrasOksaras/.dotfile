@@ -110,6 +110,7 @@
           ./home-manager/modules/neovim/neovim.nix
           ./home-manager/modules/obsidian/obsidian.nix
           ./home-manager/modules/prismlauncher/prismlauncher.nix
+          ./home-manager/modules/ssh/ssh.nix
           ./home-manager/modules/web-browser/web-browser.nix
           ./home-manager/modules/wezterm/wezterm.nix
           ./home-manager/modules/wm/wm.nix
