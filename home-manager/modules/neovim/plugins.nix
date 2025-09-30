@@ -1,5 +1,6 @@
 {
   imports = [
+    ./plugins/alpha-nvim.nix
     ./plugins/comment.nix
     ./plugins/ddc.nix
     ./plugins/highlight-colors.nix
@@ -12,7 +13,7 @@
     ./plugins/nvim-surround.nix
     ./plugins/remote-nvim.nix
     ./plugins/render-markdown.nix
-    ./plugins/smear-cursor.nix ./plugins/alpha-nvim.nix
+    ./plugins/smear-cursor.nix
     ./plugins/telescope.nix
     ./plugins/toggleterm.nix
     ./plugins/treesitter.nix
