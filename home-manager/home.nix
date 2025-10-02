@@ -60,6 +60,10 @@
     };
   };
 
+  services.mpris-proxy = {
+    enable = true;
+  };
+
   home.file = {
     ".config/ranger/rc.conf".text = ''
       set preview_images true
