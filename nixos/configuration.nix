@@ -138,6 +138,13 @@
     };
   };
 
+  programs = {
+    obs-studio = {
+      enable = true;
+      enableVirtualCamera = true;
+    };
+  };
+
   services.gns3-server = {
     enable = true;
     package = spkgs.gns3-server;
