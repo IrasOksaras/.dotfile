@@ -40,6 +40,10 @@
             };
           };
         };
+
+        terraformls = {
+          enable = true;
+        };
       };
     };
   };
