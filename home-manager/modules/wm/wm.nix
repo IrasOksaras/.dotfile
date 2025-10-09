@@ -2,6 +2,7 @@
 
   imports = [
     inputs.walker.homeManagerModules.default
+    # inputs.elephant.homeManagerModules.default
   ];
 
   wayland.windowManager.hyprland = {
@@ -35,6 +36,15 @@
     #
     # };
   };
+  # programs.elephant = {
+  #   config = {
+  #     providers = {
+  #       desktopapplications = {
+  #         launch_prefix = "app2unit --";
+  #       };
+  #     };
+  #   };
+  # };
 
   # programs.waybar = {
   #   enable = true;
