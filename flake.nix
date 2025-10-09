@@ -22,7 +22,6 @@
     };
     nixcats = {
       url = "github:BirdeeHub/nixCats-nvim";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     
     # hyprland
@@ -58,8 +57,13 @@
       inputs.hyprlang.follows = "hyprland/hyprlang";
     };
     walker = {
-      # url = "github:abenz1267/walker/1.0.0";
-      url = "github:abenz1267/walker/0.13.26";
+      url = "github:abenz1267/walker/v2.0.1";
+      # url = "github:abenz1267/walker/0.13.26";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.elephant.follows = "elephant";
+    };
+    elephant = {
+      url = "github:abenz1267/elephant/v2.0.0";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
