@@ -8,7 +8,7 @@
   programs.home-manager.enable = true;
 
   home.packages = [
-    pkgs.zathura
+    pkgs.bambu-studio
     pkgs.blender
     pkgs.calcurse
     pkgs.drawio
@@ -27,10 +27,11 @@
     pkgs.screen
     pkgs.slack
     pkgs.spotify
+    pkgs.termusic
     pkgs.terraform
+    pkgs.zathura
     spkgs.kicad
     spkgs.parsec-bin
-    pkgs.cz-cli
   ];
 
   home.sessionVariables = {
@@ -55,7 +56,7 @@
   };
 
   programs = {
-    obsidian = {
+    awscli = {
       enable = true;
     };
   };
