@@ -7,21 +7,27 @@
         nixd = {
           enable = true;
         };
+
         bashls = {
           enable = true;
         };
+
         lua_ls = {
           enable = true;
         };
+
         pylsp = {
           enable = true;
         };
+
         html = {
           enable = true;
         };
+
         cssls = {
           enable = true;
         };
+
         ts_ls = {
           enable = true;
           extraOptions = {
