@@ -20,6 +20,10 @@
           enable = true;
         };
 
+        gopls = {
+          enable = true;
+        };
+
         html = {
           enable = true;
         };
