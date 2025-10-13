@@ -150,7 +150,10 @@
     package = spkgs.gns3-server;
     ubridge.enable = true;
     vpcs.enable = true;
-    dynamips.enable = true;
+    dynamips = {
+      enable = true;
+      package = spkgs.dynamips;
+    };
     settings = {
       serverConfig = {
         host = "localhost";
@@ -287,6 +290,7 @@
   virtualisation = {
     virtualbox.host = {
       enable = true;
+      package = spkgs.virtualbox;
       enableExtensionPack = true;
       enableKvm = true;
       addNetworkInterface = false;

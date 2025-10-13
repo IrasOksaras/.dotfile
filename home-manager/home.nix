@@ -8,7 +8,6 @@
   programs.home-manager.enable = true;
 
   home.packages = [
-    pkgs.bambu-studio
     pkgs.blender
     pkgs.calcurse
     pkgs.drawio
@@ -58,6 +57,7 @@
   programs = {
     awscli = {
       enable = true;
+      package = spkgs.awscli;
     };
   };
 

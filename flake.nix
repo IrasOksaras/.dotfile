@@ -28,11 +28,6 @@
     hyprland = {
       url = "github:hyprwm/Hyprland/v0.49.0";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.aquamarine.follows = "aquamarine";
-    };
-    aquamarine = {
-      url = "github:hyprwm/aquamarine/v0.9.3";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     hypridle = {
       url = "github:hyprwm/hypridle/v0.1.7";

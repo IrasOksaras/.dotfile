@@ -15,7 +15,7 @@
       owner = "Shougo";
       repo = "ddc-source-lsp";
       rev = "master";
-      sha256 = "lnp6Hbht2uCz8cUVlQRxadUeb9Fg1lP+8oZdrTNOegQ=";
+      sha256 = "L81ttrA1tXB2RPwVyfjtphnJAIYZAC3eHc7PKfAkFQY=";
     };
   };
   ddc-source-around = pkgs.vimUtils.buildVimPlugin {
@@ -33,7 +33,7 @@
       owner = "LumaKernel";
       repo = "ddc-source-file";
       rev = "master";
-      sha256 = "jd7dChYLKa0bflVsdZie42XIGFsFrQ9G5cv2IQW88ic=";
+      sha256 = "UndfTc+awrlzJUziPEv5FFwwDjQTSqOVZXheQ/CERpg=";
     };
   };
   ddc-filter-converter_remove_overlap = pkgs.vimUtils.buildVimPlugin {
@@ -42,7 +42,7 @@
       owner = "Shougo";
       repo = "ddc-filter-converter_remove_overlap";
       rev = "master";
-      sha256 = "e8BS0Q0N4lwvzXZoFneK7O4pFNRbYX0Ybwj6+FIwUIk=";
+      sha256 = "dSob16PMRWIn0Qy1C3DCJmR+im+aqBSCR5/P1ZrhODA=";
     };
   };
   ddc-filter-matcher_head = pkgs.vimUtils.buildVimPlugin {
@@ -60,7 +60,7 @@
       owner = "Shougo";
       repo = "ddc-filter-sorter_rank";
       rev = "master";
-      sha256 = "YVGeHs6OgkqD3GMs2IuVXnOJoqcXSNP0eetX6AnqfBY=";
+      sha256 = "8zoRsX7ZNCNkokku0TW0LNkjXmBL8UCu8h3EAe4KQ+g=";
     };
   };
   ddc-ui-native = pkgs.vimUtils.buildVimPlugin {
