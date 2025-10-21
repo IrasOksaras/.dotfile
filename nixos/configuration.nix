@@ -410,8 +410,8 @@
   #   # IMEの設定
   #   GTK_IM_MODULE = "fcitx";  # または "ibus"
   #   QT_IM_MODULE = "fcitx";   # または "ibus"
-  #   XMODIFIERS = "@im=fcitx"; # または "@im=ibus"
-  #   SDL_IM_MODULE = "fcitx";  # または "ibus"
+    # xwayland用
+    XMODIFIERS = "@im=fcitx"; # または "@im=ibus"
   };
 
   # Some programs need SUID wrappers, can be configured further or are
