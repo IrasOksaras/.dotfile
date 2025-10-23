@@ -13,13 +13,10 @@
             "Groups/0" = {
               "Name" = "Default";
               "Default Layout" = "jp";
-              "DefaultIM" = "mozc";
+              "DefaultIM" = "skk";
             };
             "Groups/0/Items/0" = {
-              "Name" = "keyboard-jp";
-            };
-            "Groups/0/Items/1" = {
-              "Name" = "mozc";
+              "Name" = "skk";
             };
           };
           "globalOptions" = {
@@ -60,9 +57,9 @@
               "AutoSavePeriod"="30";
             };
           };
-          "addons" = {
-            "classicui" = {
-              "globalSection" = {
+          addons = {
+            classicui = {
+              globalSection = {
                 "Vertical Candidate List" = "False";
                 "WheelForPaging" = "True";
                 "Font" = "Sans 10";
@@ -82,10 +79,37 @@
                 "DarkTheme" = "Tokyonight-Storm";
               };
             };
+            skk = {
+              globalSection = {
+                "Rule" = "default";
+                "PunctuationStyle" = "Japanese";
+                "InitialInputMode" = "Latin";
+                "PageSize" = "7";
+                "Candidate Layout" = "Vertical";
+                "EggLikeNewLine" = "False";
+                "ShowAnnotation" = "True";
+                "CandidateChooseKey" = "Digit (0,1,2,...)";
+                "NTriggersToShowCandWin" = "4";
+              };
+              sections = {
+                "CandidatesPageUpKey" = {
+                  "0" = "Page_Up";
+                };
+                "CandidatesPageDownKey" = {
+                  "0" = "Page_Down";
+                };
+                "CursorUp" = {
+                  "0" = "Up";
+                };
+                "CursorDown" = {
+                  "0" = "Down";
+                };
+              };
+            };
           };
         };
         addons = [
-          pkgs.fcitx5-mozc
+          pkgs.fcitx5-skk
           pkgs.fcitx5-tokyonight
         ];
       };
