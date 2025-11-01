@@ -74,7 +74,6 @@
         function wtr(){
           curl "https://ja.wttr.in/$1?2nF"
         }
-        }
       '';
     };
 
