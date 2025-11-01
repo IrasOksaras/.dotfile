@@ -70,6 +70,11 @@
         
         # Load Powerlevel10k config
         [[ -f ${config.home.homeDirectory}/.p10k.zsh ]] && source ${config.home.homeDirectory}/.p10k.zsh
+
+        function wtr(){
+          curl "https://ja.wttr.in/$1?2nF"
+        }
+        }
       '';
     };
 

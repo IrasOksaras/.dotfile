@@ -34,7 +34,7 @@
     };
   };
 
-  home.shellAlias = {
+  home.shellAliases = {
     lg = "lazygit";
   };
 }
