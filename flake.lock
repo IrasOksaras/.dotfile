@@ -1748,16 +1748,16 @@
         "systems": "systems_9"
       },
       "locked": {
-        "lastModified": 1759689462,
-        "narHash": "sha256-voJsBbLzs8nJq11DKc52CEgO1E7X6XF0G3DwVw3cSoI=",
+        "lastModified": 1761509126,
+        "narHash": "sha256-HhTHoKx/9pc1IJLuB8QsjWwI+jyqXbowBh7JIlQa8Ms=",
         "owner": "abenz1267",
         "repo": "walker",
-        "rev": "496ed906efbf8d5123a6f185ce4cae0825356371",
+        "rev": "2a8d1fc38d49f98560d703d4b3d5b6237fc267ad",
         "type": "github"
       },
       "original": {
         "owner": "abenz1267",
-        "ref": "v2.0.1",
+        "ref": "v2.7.1",
         "repo": "walker",
         "type": "github"
       }

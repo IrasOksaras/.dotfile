@@ -52,7 +52,7 @@
       inputs.hyprlang.follows = "hyprland/hyprlang";
     };
     walker = {
-      url = "github:abenz1267/walker/v2.0.1";
+      url = "github:abenz1267/walker/v2.7.1";
       # url = "github:abenz1267/walker/0.13.26";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.elephant.follows = "elephant";
