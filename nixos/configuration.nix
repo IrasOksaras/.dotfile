@@ -408,8 +408,8 @@
     NIXOS_OZONE_WL = "1";  # Electronアプリのためのオゾンバックエンド
   #   
   #   # IMEの設定
-    GTK_IM_MODULE = "wayland";  # または "ibus"
-    QT_IM_MODULE = "wayland";   # または "ibus"
+    # GTK_IM_MODULE = "wayland";  # または "ibus"
+    # QT_IM_MODULE = "wayland";   # または "ibus"
     # xwayland用
     XMODIFIERS = "@im=fcitx"; # または "@im=ibus"
   };
