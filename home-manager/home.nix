@@ -19,6 +19,8 @@
     pkgs.impala
     pkgs.keepassxc
     pkgs.mysql-workbench
+    pkgs.niri
+    pkgs.orca-slicer
     pkgs.pavucontrol
     pkgs.ranger
     pkgs.realvnc-vnc-viewer
