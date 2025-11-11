@@ -14,6 +14,7 @@
     pkgs.freecad-wayland
     pkgs.gemini-cli
     pkgs.gns3-gui
+    pkgs.google-cloud-sdk
     pkgs.gparted
     pkgs.grimblast
     pkgs.impala
