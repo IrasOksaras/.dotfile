@@ -57,4 +57,11 @@ in {
   home.shellAliases = {
     lg = "lazygit";
   };
+
+  xdg.configFile = {
+    "codegpt.yaml" = {
+      source = ./.codegpt.yaml;
+      target = "codegpt/.codegpt.yaml";
+    };
+  };
 }
