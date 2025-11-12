@@ -282,6 +282,7 @@
     extraFlags = [
       "--n-gpu-layers"
       "99"
+      "--jinja"
     ];
     port = 8081;
     package = spkgs.llama-cpp.override { vulkanSupport = true; };
