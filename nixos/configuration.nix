@@ -145,27 +145,27 @@
     };
   };
 
-  services.gns3-server = {
-    enable = true;
-    package = spkgs.gns3-server;
-    ubridge.enable = true;
-    vpcs.enable = true;
-    dynamips = {
-      enable = true;
-      package = spkgs.dynamips;
-    };
-    settings = {
-      serverConfig = {
-        host = "localhost";
-        port = 3080;
-        # projects_path = "/home/${username}/GNS3/projects";
-        # configs_path = "home/${username}/GNS3/configs";
-        # images_path = "home/${username}/GNS3/images";
-        # symbols_path = "home/${username}/GNS3/symbols";
-        # appliances_path = "home${username}/GNS3/applications";
-      };
-    };
-  };
+  # services.gns3-server = {
+  #   enable = true;
+  #   package = spkgs.gns3-server;
+  #   ubridge.enable = true;
+  #   vpcs.enable = true;
+  #   dynamips = {
+  #     enable = true;
+  #     package = spkgs.dynamips;
+  #   };
+  #   settings = {
+  #     serverConfig = {
+  #       host = "localhost";
+  #       port = 3080;
+  #       # projects_path = "/home/${username}/GNS3/projects";
+  #       # configs_path = "home/${username}/GNS3/configs";
+  #       # images_path = "home/${username}/GNS3/images";
+  #       # symbols_path = "home/${username}/GNS3/symbols";
+  #       # appliances_path = "home${username}/GNS3/applications";
+  #     };
+  #   };
+  # };
 
   # フォント設定
   fonts = {
@@ -289,13 +289,13 @@
   };
 
   virtualisation = {
-    virtualbox.host = {
-      enable = true;
-      package = spkgs.virtualbox;
-      enableExtensionPack = true;
-      enableKvm = true;
-      addNetworkInterface = false;
-    };
+    # virtualbox.host = {
+    #   enable = true;
+    #   package = spkgs.virtualbox;
+    #   enableExtensionPack = true;
+    #   enableKvm = true;
+    #   addNetworkInterface = false;
+    # };
     docker = {
       enable = true;
       rootless = {
