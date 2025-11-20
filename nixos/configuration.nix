@@ -245,11 +245,6 @@
   };
 
   environment.systemPackages = [
-    # pkgs.rnnoise-plugin
-    # pkgs.wayland-protocols
-    pkgs.libimobiledevice
-    pkgs.ifuse
-    pkgs.vbam
     pkgs.aria2
     pkgs.bluetuith
     pkgs.busybox
@@ -257,13 +252,15 @@
     pkgs.gnome-keyring
     pkgs.gparted
     pkgs.htop
+    pkgs.ifuse
     pkgs.intel-gpu-tools
     pkgs.kdePackages.print-manager
+    pkgs.libimobiledevice
     pkgs.nur.repos.ataraxiasjel.waydroid-script
     pkgs.nyx
-    pkgs.tree
+    # pkgs.rnnoise-plugin
     pkgs.virt-manager
-    pkgs.wayland
+    # pkgs.wayland-protocols
     pkgs.wget
     pkgs.wl-clipboard-rs
     pkgs.xdg-desktop-portal
