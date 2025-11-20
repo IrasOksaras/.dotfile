@@ -72,11 +72,13 @@
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
 
-  programs.hyprland = {
+  programs.niri = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
   };
+
+  # programs.regreet = {
+  #   enable = true;
+  # };
 
   services.upower = {
     enable = true;
@@ -93,8 +95,10 @@
   };
 
   services.xremap = {
+    enable = true;
     userName = "${username}";
     serviceMode = "system";
+    withNiri = true;
     config = {
       modmap = [
         {
@@ -250,6 +254,8 @@
     pkgs.bluetuith
     pkgs.busybox
     pkgs.docker-compose
+    pkgs.gnome-keyring
+    pkgs.gparted
     pkgs.htop
     pkgs.intel-gpu-tools
     pkgs.kdePackages.print-manager
@@ -260,6 +266,10 @@
     pkgs.wayland
     pkgs.wget
     pkgs.wl-clipboard-rs
+    pkgs.xdg-desktop-portal
+    pkgs.xdg-desktop-portal-gnome
+    pkgs.xwayland-satellite
+    spkgs.vbam
   ];
 
   users.groups.wireshark = {

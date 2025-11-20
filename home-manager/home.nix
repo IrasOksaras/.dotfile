@@ -15,12 +15,11 @@
     pkgs.gemini-cli
     pkgs.gns3-gui
     pkgs.google-cloud-sdk
-    pkgs.gparted
     pkgs.grimblast
     pkgs.impala
     pkgs.keepassxc
     pkgs.mysql-workbench
-    pkgs.niri
+    pkgs.nmgui
     pkgs.orca-slicer
     pkgs.pavucontrol
     pkgs.ranger
