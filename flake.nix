@@ -24,6 +24,10 @@
       url = "github:BirdeeHub/nixCats-nvim";
     };
     
+    niri-scratchpad-flake = {
+      url = "github:gvolpe/niri-scratchpad";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     walker = {
       url = "github:abenz1267/walker/v2.11.1";
       inputs.nixpkgs.follows = "nixpkgs-unstable";

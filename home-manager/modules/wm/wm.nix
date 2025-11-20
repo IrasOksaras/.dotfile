@@ -1,5 +1,6 @@
-{inputs, username, pkgs, ...}: {
-
+{inputs, username, pkgs, ...}: let
+  inherit (inputs.niri-scratchpad-flake.packages.${pkgs.system}) niri-scratchpad;
+in {
   imports = [
     inputs.walker.homeManagerModules.default
     # inputs.elephant.homeManagerModules.default
@@ -75,6 +76,7 @@
   home.packages = [
     pkgs.polkit_gnome
     pkgs.nautilus
+    niri-scratchpad
   ];
 
   xdg.configFile = {
