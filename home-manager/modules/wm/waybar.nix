@@ -6,27 +6,13 @@
     margin-top = 4;
     margin-left = 4;
     margin-right = 4;
-    output = [ "eDP-1" ];
-    modules-left = [ "custom/smallspacer" "hyprland/workspaces" ];
+    output = [ "eDP-1" "HDMI-A-1"];
+    modules-left = [ "hyprland/workspaces" "niri/workspaces" "niri/window" ];
     modules-center = [ "clock" ];
-    modules-right = [ "battery" ];
-
-    "hyprland/workspaces" = {
-      format = "{icon}";
-      format-icons = {
-        default = "";
-        active = "";
-      };
-    };
-
-    "hyprland/window" = {
-      format = "<span weight='bold' >{class}</span>";
-      max-length = 120;
-      icon = false;
-    };
+    modules-right = [ "network" "custom/padding" "pulseaudio" "custom/padding" "battery" ];
 
     battery = {
-      format = "{icon}";
+      format = "{icon}  {capacity}%";
       # format-alt = "{capacity}% {icon}";
       format-icons = [ "" "" "" "" "" "" "" "" ];
     };
@@ -35,6 +21,39 @@
       format = "{:%H:%M}";
       format-alt = "{:%a, %d. %b  %H:%M}";
       tooltip = false;
+    };
+
+    "network" = {
+      "format" = "{ipaddr}/{cidr}";
+      "family" = "ipv4";
+      "on-click" = "nmgui";
+    };
+
+    "pulseaudio" = {
+      "format" = "{icon}  {volume}%";
+      "format-muted" = "";
+      "format-icons" = {
+        "default" = [ "" "" ];
+      };
+      "on-click" = "pavucontrol";
+    };
+
+    "niri/workspaces" = {
+      "format" = "{icon}";
+      "format-icons" = {
+        "browser" = "󰈹";
+      };
+    };
+    "niri/window" = {
+      "format" = "{title}:{app_id}";
+    };
+
+    "hyprland/workspaces" = {
+      "format" = "{}";
+    };
+
+    "custom/padding" = {
+      "format" = "|";
     };
   }
 ]

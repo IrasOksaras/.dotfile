@@ -5,26 +5,25 @@
     # inputs.elephant.homeManagerModules.default
   ];
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-    package = null;
-    portalPackage = null;
-    plugins = [
-      inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
-      inputs.hyprspace.packages.${pkgs.system}.Hyprspace
-    ];
-    settings = import ./hyprland/hyprlandSettings.nix;
+  # https://github.com/NixOS/nixpkgs/issues/463220#issuecomment-3553895856
+  home.sessionVariables = {
+    GSK_RENDERER = "gl";
   };
 
-  services = {
-    hypridle = {
-      enable = true;
-      package = inputs.hypridle.packages.${pkgs.system}.hypridle;
-      settings = {
-        general = {
-
+  programs.niriswitcher = {
+    enable = true;
+    settings = {
+      keys = {
+        modifier = "Super";
+        switch = {
+          next = "Tab";
+          prev = "Shift+Tab";
         };
+      };
+      center_on_focus = true;
+      appearance = {
+        system_theme = "dark";
+        icon_size = 64;
       };
     };
   };
@@ -46,28 +45,44 @@
   #   };
   # };
 
-  # programs.waybar = {
-  #   enable = true;
-  #   systemd = {
-  #     enable = true;
-  #   };
-  #   settings = import ./waybar.nix;
-  #   style = builtins.readFile ./waybar.css;
-  # };
-
-  programs.hyprpanel = {
+  programs.waybar = {
     enable = true;
-    systemd.enable = true;
-    settings = import ./hyprpanel.nix;
+    systemd = {
+      enable = true;
+    };
+    settings = import ./waybar.nix;
+    style = builtins.readFile ./waybar.css;
+  };
+
+  systemd.user.services.polkit-gnome-authentication-agent-1 = {
+    Unit = {
+      Description = "polkit-gnome-authentication-agent-1";
+      Wants = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
   };
 
   home.packages = [
-    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
-    pkgs.iniparser
-    pkgs.hyprpolkitagent
-    pkgs.hyprshot
-    pkgs.fftw
+    pkgs.polkit_gnome
+    pkgs.nautilus
   ];
+
+  xdg.configFile = {
+    "niriConfig" = {
+      source = ./config.kdl;
+      target = "niri/config.kdl";
+    };
+  };
 
   services = {
     hyprpaper = {

@@ -10,15 +10,16 @@
   home.packages = [
     pkgs.blender
     pkgs.calcurse
-    pkgs.drawio
     pkgs.freecad-wayland
     pkgs.gemini-cli
     pkgs.gns3-gui
-    pkgs.gparted
+    pkgs.google-cloud-sdk
     pkgs.grimblast
+    pkgs.image-roll
     pkgs.impala
-    pkgs.keepassxc
     pkgs.mysql-workbench
+    pkgs.nmgui
+    pkgs.orca-slicer
     pkgs.pavucontrol
     pkgs.ranger
     pkgs.realvnc-vnc-viewer
@@ -29,6 +30,7 @@
     pkgs.termusic
     pkgs.terraform
     pkgs.zathura
+    spkgs.drawio
     spkgs.kicad
     spkgs.parsec-bin
   ];

@@ -23,6 +23,9 @@
   # };
 
   home.file = {
-  ".tor\ project/Tor/torrc".source = ./torrc;
+    torrc = {
+      source = ./torrc;
+      target = ".tor\ project/Tor/torrc";
+    };
   };
 }

@@ -54,7 +54,6 @@
       ];
 
       shellAliases = {
-        lg = "lazygit";
         kc = "kubectl";
         tf = "terraform";
       };
@@ -71,6 +70,10 @@
         
         # Load Powerlevel10k config
         [[ -f ${config.home.homeDirectory}/.p10k.zsh ]] && source ${config.home.homeDirectory}/.p10k.zsh
+
+        function wtr(){
+          curl "https://ja.wttr.in/$1?2nF"
+        }
       '';
     };
 
@@ -82,6 +85,9 @@
   };
 
   home.file = {
-    ".p10k.zsh".source = ./p10k.zsh;
+    "p10k.zsh" = {
+        source = ./p10k.zsh;
+        target = ".p10k.zsh";
+    };
   };
 }

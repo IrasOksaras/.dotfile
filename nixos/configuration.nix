@@ -72,11 +72,13 @@
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
 
-  programs.hyprland = {
+  programs.niri = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
   };
+
+  # programs.regreet = {
+  #   enable = true;
+  # };
 
   services.upower = {
     enable = true;
@@ -93,8 +95,10 @@
   };
 
   services.xremap = {
+    enable = true;
     userName = "${username}";
     serviceMode = "system";
+    withNiri = true;
     config = {
       modmap = [
         {
@@ -145,27 +149,27 @@
     };
   };
 
-  services.gns3-server = {
-    enable = true;
-    package = spkgs.gns3-server;
-    ubridge.enable = true;
-    vpcs.enable = true;
-    dynamips = {
-      enable = true;
-      package = spkgs.dynamips;
-    };
-    settings = {
-      serverConfig = {
-        host = "localhost";
-        port = 3080;
-        # projects_path = "/home/${username}/GNS3/projects";
-        # configs_path = "home/${username}/GNS3/configs";
-        # images_path = "home/${username}/GNS3/images";
-        # symbols_path = "home/${username}/GNS3/symbols";
-        # appliances_path = "home${username}/GNS3/applications";
-      };
-    };
-  };
+  # services.gns3-server = {
+  #   enable = true;
+  #   package = spkgs.gns3-server;
+  #   ubridge.enable = true;
+  #   vpcs.enable = true;
+  #   dynamips = {
+  #     enable = true;
+  #     package = spkgs.dynamips;
+  #   };
+  #   settings = {
+  #     serverConfig = {
+  #       host = "localhost";
+  #       port = 3080;
+  #       # projects_path = "/home/${username}/GNS3/projects";
+  #       # configs_path = "home/${username}/GNS3/configs";
+  #       # images_path = "home/${username}/GNS3/images";
+  #       # symbols_path = "home/${username}/GNS3/symbols";
+  #       # appliances_path = "home${username}/GNS3/applications";
+  #     };
+  #   };
+  # };
 
   # フォント設定
   fonts = {
@@ -241,25 +245,28 @@
   };
 
   environment.systemPackages = [
-    # pkgs.rnnoise-plugin
-    # pkgs.wayland-protocols
-    pkgs.libimobiledevice
-    pkgs.ifuse
-    pkgs.vbam
     pkgs.aria2
     pkgs.bluetuith
     pkgs.busybox
     pkgs.docker-compose
+    pkgs.gnome-keyring
+    pkgs.gparted
     pkgs.htop
+    pkgs.ifuse
     pkgs.intel-gpu-tools
     pkgs.kdePackages.print-manager
+    pkgs.libimobiledevice
     pkgs.nur.repos.ataraxiasjel.waydroid-script
     pkgs.nyx
-    pkgs.tree
+    # pkgs.rnnoise-plugin
     pkgs.virt-manager
-    pkgs.wayland
+    # pkgs.wayland-protocols
     pkgs.wget
     pkgs.wl-clipboard-rs
+    pkgs.xdg-desktop-portal
+    pkgs.xdg-desktop-portal-gnome
+    pkgs.xwayland-satellite
+    spkgs.vbam
   ];
 
   users.groups.wireshark = {
@@ -282,19 +289,20 @@
     extraFlags = [
       "--n-gpu-layers"
       "99"
+      "--jinja"
     ];
     port = 8081;
     package = spkgs.llama-cpp.override { vulkanSupport = true; };
   };
 
   virtualisation = {
-    virtualbox.host = {
-      enable = true;
-      package = spkgs.virtualbox;
-      enableExtensionPack = true;
-      enableKvm = true;
-      addNetworkInterface = false;
-    };
+    # virtualbox.host = {
+    #   enable = true;
+    #   package = spkgs.virtualbox;
+    #   enableExtensionPack = true;
+    #   enableKvm = true;
+    #   addNetworkInterface = false;
+    # };
     docker = {
       enable = true;
       rootless = {
@@ -408,10 +416,10 @@
     NIXOS_OZONE_WL = "1";  # Electronアプリのためのオゾンバックエンド
   #   
   #   # IMEの設定
-  #   GTK_IM_MODULE = "fcitx";  # または "ibus"
-  #   QT_IM_MODULE = "fcitx";   # または "ibus"
-  #   XMODIFIERS = "@im=fcitx"; # または "@im=ibus"
-  #   SDL_IM_MODULE = "fcitx";  # または "ibus"
+    # GTK_IM_MODULE = "wayland";  # または "ibus"
+    # QT_IM_MODULE = "wayland";   # または "ibus"
+    # xwayland用
+    XMODIFIERS = "@im=fcitx"; # または "@im=ibus"
   };
 
   # Some programs need SUID wrappers, can be configured further or are

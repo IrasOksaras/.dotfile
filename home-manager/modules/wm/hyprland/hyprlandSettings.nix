@@ -54,10 +54,9 @@
   animation = [ 
     "windows, 1, 3, default"
   ];
-  gestures = {
-    workspace_swipe = true;
-    workspace_swipe_fingers = 4;
-  };
+  gesture = [
+    "4, horizontal, workspace"
+  ];
   monitor = [
     "eDP-1, 1920x1200@60, 0x0, 1.1"
     "HDMI-A-1, 3840x2160@60, -436x-1440, 1.5"

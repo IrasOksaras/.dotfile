@@ -24,41 +24,13 @@
       url = "github:BirdeeHub/nixCats-nvim";
     };
     
-    # hyprland
-    hyprland = {
-      url = "github:hyprwm/Hyprland/v0.49.0";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-    hypridle = {
-      url = "github:hyprwm/hypridle/v0.1.7";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.hyprlang.follows = "hyprland/hyprlang";
-    };
-    hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-    hyprsplit = {
-      url = "github:shezdy/hyprsplit";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hyprspace = {
-      url = "github:KZDKM/Hyprspace/847a770436e1ecebdbe5ed006a93db7666937ff2";
-      inputs.hyprland.follows = "hyprland";
-    };
-    rose-pine-hyprcursor = {
-      url = "github:ndom91/rose-pine-hyprcursor";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.hyprlang.follows = "hyprland/hyprlang";
-    };
     walker = {
-      url = "github:abenz1267/walker/v2.0.1";
-      # url = "github:abenz1267/walker/0.13.26";
+      url = "github:abenz1267/walker/v2.11.1";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.elephant.follows = "elephant";
     };
     elephant = {
-      url = "github:abenz1267/elephant/v2.0.0";
+      url = "github:abenz1267/elephant/v2.16.0";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
@@ -73,6 +45,9 @@
     username = "Iras";
     overlays = [ inputs.nur.overlays.default ];
     pkgs = import inputs.nixpkgs-unstable { 
+      config.permittedInsecurePackages = [
+        "ciscoPacketTracer8-8.2.2"
+      ];
       config.allowUnfree = true;
       inherit system overlays;
     };
@@ -108,6 +83,7 @@
           ./home-manager/modules/ncspot/ncspot.nix
           ./home-manager/modules/neovim/neovim.nix
           ./home-manager/modules/obsidian/obsidian.nix
+          ./home-manager/modules/opencode/opencode.nix
           ./home-manager/modules/prismlauncher/prismlauncher.nix
           ./home-manager/modules/ssh/ssh.nix
           ./home-manager/modules/web-browser/web-browser.nix
