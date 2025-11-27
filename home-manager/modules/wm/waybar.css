@@ -51,6 +51,7 @@ button {
     border-radius: 20;
 }
 
+#custom-notification,
 #pulseaudio,
 #network,
 #battery {
@@ -58,6 +59,7 @@ button {
     border-radius: 2.5px;
 }
 
+#custom-notification:hover,
 #pulseaudio:hover,
 #clock:hover,
 #network:hover,
