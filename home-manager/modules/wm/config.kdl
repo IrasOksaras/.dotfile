@@ -110,6 +110,8 @@ output "eDP-1" {
 }
 
 cursor {
+    xcursor-theme "Miku_Cursors"
+    xcursor-size 36
     hide-when-typing
 }
 

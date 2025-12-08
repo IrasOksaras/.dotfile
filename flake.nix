@@ -84,6 +84,7 @@
         modules = [
           ./home-manager/home.nix
           ./home-manager/modules/btop/btop.nix
+          ./home-manager/modules/cursor/cursor.nix
           ./home-manager/modules/git/git.nix
           ./home-manager/modules/im/im.nix
           ./home-manager/modules/kubectl/kubectl.nix
