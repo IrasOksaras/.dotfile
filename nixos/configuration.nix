@@ -7,6 +7,7 @@
   imports = [ 
     ./hardware-configuration.nix
     inputs.xremap.nixosModules.default
+    inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -115,6 +116,18 @@
         # }
       ];
     };
+  };
+
+  services.flatpak = {
+    enable = true;
+    overrides = {
+      global = {
+        Context.filesystems = [ "/nix/store:ro" ];
+      };
+    };
+    packages = [
+      "com.discordapp.Discord"
+    ];
   };
 
   security.polkit = {
@@ -365,16 +378,6 @@
     pulse.enable = true;
   };
 
-  services.flatpak.enable = true;
-
-  systemd.services.flatpak-repo = {
-    wantedBy = [ "multi-user.target" ];
-    path = [ pkgs.flatpak ];
-    script = ''
-      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    '';
-  };
-
   xdg = {
     # terminal-exec = {
     #   enable = true;
@@ -386,6 +389,7 @@
     # };
     portal = {
       enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
     };
   };
 

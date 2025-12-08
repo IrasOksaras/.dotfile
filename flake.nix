@@ -38,6 +38,9 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/?ref=latest";
+    };
     xremap = {
       url = "github:xremap/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
