@@ -333,7 +333,10 @@
 
   # tailscale（VPN）を有効化
 
-  services.tailscale.enable = true;
+  services.tailscale = {
+    enable = true;
+    extraSetFlags = [ "--operator=${username}" ];
+  };
 
   networking.firewall = {
     enable = true;
