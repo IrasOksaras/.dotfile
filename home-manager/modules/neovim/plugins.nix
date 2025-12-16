@@ -14,6 +14,7 @@
     ./plugins/remote-nvim.nix
     ./plugins/render-markdown.nix
     ./plugins/smear-cursor.nix
+    ./plugins/snacks.nix
     ./plugins/telescope.nix
     ./plugins/toggleterm.nix
     ./plugins/treesitter.nix

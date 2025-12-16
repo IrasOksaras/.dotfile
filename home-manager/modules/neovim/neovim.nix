@@ -40,6 +40,7 @@
     extraPackages = [
       pkgs.deno
       pkgs.fd
+      pkgs.imagemagick
       pkgs.ripgrep
     ];
   };
