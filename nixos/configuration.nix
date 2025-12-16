@@ -123,6 +123,9 @@
     overrides = {
       global = {
         Context.filesystems = [ "/nix/store:ro" ];
+        Environment = {
+          GTK_THEME = "Tokyonight-Dark";
+        };
       };
     };
     packages = [
