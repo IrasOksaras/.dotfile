@@ -19,8 +19,11 @@ in {
   programs = {
     git = {
       enable = true;
-      userName = "IrasOksaras";
-      userEmail = "g024c1054@g.neec.ac.jp";
+      settings = {
+        user.name = "sunao1222";
+        user.email = "g024c1054@g.neec.ac.jp";
+        init.defaultBranch = "main";
+      };
     };
 
     gh = {
