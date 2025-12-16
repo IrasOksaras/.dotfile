@@ -16,6 +16,10 @@
       url = "github:wezterm/wezterm?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -85,6 +89,7 @@
           ./home-manager/home.nix
           ./home-manager/modules/btop/btop.nix
           ./home-manager/modules/cursor/cursor.nix
+          ./home-manager/modules/ghostty/ghostty.nix
           ./home-manager/modules/git/git.nix
           ./home-manager/modules/im/im.nix
           ./home-manager/modules/kubectl/kubectl.nix
