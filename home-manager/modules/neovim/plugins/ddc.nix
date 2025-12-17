@@ -161,11 +161,12 @@ in {
       " call ddc#custom#patch_global('ui', 'pum')
       "
       " call ddc#enable()
+      "
       " inoremap <silent><expr> <TAB>
       "   \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
       "   \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
       "   \ '<TAB>' : ddc#map#manual_complete()
-      inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+      " inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
       inoremap <C-n>   <Cmd>call pum#map#select_relative(+1)<CR>
       inoremap <C-p>   <Cmd>call pum#map#select_relative(-1)<CR>
       inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
@@ -173,37 +174,37 @@ in {
     '';
 
     keymaps = [
-      {
-        action = ''
-          function() return vim.fn['pum#visible']() and '<Cmd>call pum#map#insert_relative(+1)<CR>' or (vim.fn.col('.') <= 1 or vim.fn.getline('.'):sub(vim.fn.col('.') - 1, vim.fn.col('.') - 1):match('%s')) and '<TAB>' or vim.fn['ddc#map#manual_complete']() end
-        '';
-        key = "<TAB>";
-        mode = [ "i" ];
-        options = {
-          silent = true;
-          noremap = true;
-          expr = true;
-        };
-      }
-      {
-        action = "pumvisible() ? '<C-p>' : '<C-h>'";
-        key = "<S-Tab>";
-        mode = [ "i" ];
-        options = {
-          silent = true;
-          noremap = true;
-          expr = true;
-        };
-      }
-      {
-        action = "<cmd>call pum#confirm()<CR>";
-        key = "C-y";
-        mode = [ "i" ];
-        options = {
-          noremap = true;
-          silent = true;
-        };
-      }
+      # {
+      #   action = ''
+      #     function() return vim.fn['pum#visible']() and '<Cmd>call pum#map#insert_relative(+1)<CR>' or (vim.fn.col('.') <= 1 or vim.fn.getline('.'):sub(vim.fn.col('.') - 1, vim.fn.col('.') - 1):match('%s')) and '<TAB>' or vim.fn['ddc#map#manual_complete']() end
+      #   '';
+      #   key = "<TAB>";
+      #   mode = [ "i" ];
+      #   options = {
+      #     silent = true;
+      #     noremap = true;
+      #     expr = true;
+      #   };
+      # }
+      # {
+      #   action = "pumvisible() ? '<C-p>' : '<C-h>'";
+      #   key = "<S-Tab>";
+      #   mode = [ "i" ];
+      #   options = {
+      #     silent = true;
+      #     noremap = true;
+      #     expr = true;
+      #   };
+      # }
+      # {
+      #   action = "<cmd>call pum#confirm()<CR>";
+      #   key = "C-y";
+      #   mode = [ "i" ];
+      #   options = {
+      #     noremap = true;
+      #     silent = true;
+      #   };
+      # }
     ];
   };
 }
