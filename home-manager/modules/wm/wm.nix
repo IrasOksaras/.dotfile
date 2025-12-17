@@ -6,11 +6,6 @@ in {
     # inputs.elephant.homeManagerModules.default
   ];
 
-  # https://github.com/NixOS/nixpkgs/issues/463220#issuecomment-3553895856
-  home.sessionVariables = {
-    GSK_RENDERER = "gl";
-  };
-
   programs.niriswitcher = {
     enable = true;
     settings = {
