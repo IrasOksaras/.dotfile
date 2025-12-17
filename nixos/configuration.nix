@@ -282,7 +282,7 @@
     pkgs.xdg-desktop-portal
     pkgs.xdg-desktop-portal-gnome
     pkgs.xwayland-satellite
-    spkgs.vbam
+    pkgs.vbam
   ];
 
   users.groups.wireshark = {
