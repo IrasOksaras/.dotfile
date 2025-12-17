@@ -83,6 +83,18 @@ in {
     niri-scratchpad
   ];
 
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Tokyonight-Dark";
+      package = pkgs.tokyonight-gtk-theme;
+    };
+    iconTheme = {
+      name = "adwaita";
+      package = pkgs.adwaita-icon-theme;
+    };
+  };
+
   xdg.configFile = {
     "niriConfig" = {
       source = ./config.kdl;
