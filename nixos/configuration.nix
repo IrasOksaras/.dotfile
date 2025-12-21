@@ -207,7 +207,7 @@
 
   console = {
     font = "Lat2-Terminus16";
-    keyMap = "jp106";
+    keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
   };
 
@@ -216,8 +216,8 @@
     # desktopManager.plasma6.enable = true;
     xserver = {
       enable = true;
-      xkb.layout = "jp";
-      xkb.model = "jp106";
+      xkb.layout = "us";
+      xkb.model = "us";
     };
   };
 
