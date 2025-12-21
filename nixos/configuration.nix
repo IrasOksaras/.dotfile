@@ -304,7 +304,7 @@
       "--jinja"
     ];
     port = 8081;
-    package = spkgs.llama-cpp.override { vulkanSupport = true; };
+    package = pkgs.llama-cpp.override { vulkanSupport = true; };
   };
 
   virtualisation = {
