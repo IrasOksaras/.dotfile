@@ -70,7 +70,7 @@
         fi
         
         # Load Powerlevel10k config
-        [[ -f ${config.home.homeDirectory}/.p10k.zsh ]] && source ${config.home.homeDirectory}/.p10k.zsh
+        [[ -f ${config.xdg.configHome}/zsh/.p10k.zsh ]] && source ${config.xdg.configHome}/zsh/.p10k.zsh
 
         function wtr(){
           curl "https://ja.wttr.in/$1?2nF"
@@ -85,10 +85,10 @@
     };
   };
 
-  home.file = {
+  xdg.configFile = {
     "p10k.zsh" = {
-        source = ./p10k.zsh;
-        target = ".p10k.zsh";
+      source = ./p10k.zsh;
+      target = "zsh/.p10k.zsh";
     };
   };
 }
