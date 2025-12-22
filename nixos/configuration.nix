@@ -275,7 +275,6 @@
     pkgs.intel-gpu-tools
     pkgs.kdePackages.print-manager
     pkgs.libimobiledevice
-    pkgs.nur.repos.ataraxiasjel.waydroid-script
     pkgs.nyx
     # pkgs.rnnoise-plugin
     pkgs.virt-manager
