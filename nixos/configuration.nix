@@ -324,7 +324,7 @@
     };
     waydroid = {
       enable = true;
-      package = pkgs.waydroid; 
+      package = pkgs.waydroid-nftables; 
     };
   };
 
