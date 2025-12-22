@@ -315,13 +315,6 @@
   };
 
   virtualisation = {
-    # virtualbox.host = {
-    #   enable = true;
-    #   package = spkgs.virtualbox;
-    #   enableExtensionPack = true;
-    #   enableKvm = true;
-    #   addNetworkInterface = false;
-    # };
     docker = {
       enable = true;
       rootless = {
@@ -329,13 +322,11 @@
         setSocketVariable = true;
       };
     };
-    libvirtd.enable = true;
     waydroid = {
       enable = true;
       package = pkgs.waydroid; 
     };
   };
-  users.extraGroups.vboxusers.members = ["${username}"];
 
   # tailscale（VPN）を有効化
 
