@@ -41,6 +41,10 @@
       url = "github:abenz1267/elephant/v2.16.0";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    awww = {
+      url = "git+https://codeberg.org/LGFae/awww";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/?ref=latest";
