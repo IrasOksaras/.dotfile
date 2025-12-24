@@ -27,6 +27,7 @@
     pkgs.slack
     pkgs.spotify
     pkgs.termusic
+    pkgs.waydroid-helper
     pkgs.zathura
     spkgs.drawio
     spkgs.kicad
