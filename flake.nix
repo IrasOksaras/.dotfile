@@ -93,10 +93,10 @@
           ./home-manager/home.nix
           ./home-manager/modules/btop/btop.nix
           ./home-manager/modules/cursor/cursor.nix
+          ./home-manager/modules/devOps/devOps.nix
           ./home-manager/modules/ghostty/ghostty.nix
           ./home-manager/modules/git/git.nix
           ./home-manager/modules/im/im.nix
-          ./home-manager/modules/kubectl/kubectl.nix
           ./home-manager/modules/ncspot/ncspot.nix
           ./home-manager/modules/neovim/neovim.nix
           ./home-manager/modules/obsidian/obsidian.nix

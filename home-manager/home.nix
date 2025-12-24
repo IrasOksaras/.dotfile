@@ -13,7 +13,6 @@
     pkgs.freecad-wayland
     pkgs.gemini-cli
     pkgs.gns3-gui
-    pkgs.google-cloud-sdk
     pkgs.grimblast
     pkgs.image-roll
     pkgs.impala
@@ -28,7 +27,6 @@
     pkgs.slack
     pkgs.spotify
     pkgs.termusic
-    pkgs.terraform
     pkgs.zathura
     spkgs.drawio
     spkgs.kicad
