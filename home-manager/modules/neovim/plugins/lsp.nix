@@ -58,6 +58,9 @@
         terraformls = {
           enable = true;
         };
+        yamlls = {
+          enable = true;
+        };
       };
     };
   };
